@@ -499,10 +499,10 @@ jQuery(document).ready(function () {
 /* ---------------------------------------------------------------------------
  * Post like Counter 
  * --------------------------------------------------------------------------- */
-function foodbakery_post_likes_count(admin_url, id, obj) {
+function foodworld_post_likes_count(admin_url, id, obj) {
     "use strict";
 
-    var dataString = 'post_id=' + id + '&action=foodbakery_post_likes_count';
+    var dataString = 'post_id=' + id + '&action=foodworld_post_likes_count';
     jQuery(obj).html('<i class="icon-spinner icon-spin"></i>');
     jQuery.ajax({
         type: "POST",
@@ -523,10 +523,10 @@ function foodbakery_post_likes_count(admin_url, id, obj) {
 
 
 
-function foodbakery_show_response_theme(loader_data, loading_element) {
+function foodworld_show_response_theme(loader_data, loading_element) {
 
-    jQuery(".foodbakery_loader").hide();
-    jQuery("#growls").removeClass('foodbakery_element_growl');
+    jQuery(".foodworld_loader").hide();
+    jQuery("#growls").removeClass('foodworld_element_growl');
     jQuery("#growls").find('.growl').remove();
     if (loader_data != 'undefined' && loader_data != '') {
 
@@ -536,7 +536,7 @@ function foodbakery_show_response_theme(loader_data, loading_element) {
             });
             if (loading_element != 'undefined' && loading_element != undefined && loading_element != '') {
                 jQuery("#growls").prependTo(loading_element);
-                jQuery("#growls").addClass('foodbakery_element_growl');
+                jQuery("#growls").addClass('foodworld_element_growl');
 
             }
         } else if (loader_data.type != 'undefined' && loader_data.type == 'success') {
@@ -545,18 +545,18 @@ function foodbakery_show_response_theme(loader_data, loading_element) {
             });
             if (loading_element != 'undefined' && loading_element != undefined && loading_element != '') {
                 jQuery("#growls").prependTo(loading_element);
-                jQuery("#growls").addClass('foodbakery_element_growl');
+                jQuery("#growls").addClass('foodworld_element_growl');
             }
         }
     }
     jQuery("#message22").remove();
 }
 jQuery(document).ready(function ($) {
-    if (jQuery(".foodbakery-fancy-menu li.current-menu-parent a").length > 0) {
-        jQuery(".foodbakery-fancy-menu li.current-menu-parent a").click();
-    } else if (jQuery(".foodbakery-fancy-menu li").first().children('ul.sub-menu').length > 0) {
-        jQuery(".foodbakery-fancy-menu li").first().children('ul.sub-menu').slideDown();
-        jQuery(".foodbakery-fancy-menu li").first().addClass('active');
+    if (jQuery(".foodworld-fancy-menu li.current-menu-parent a").length > 0) {
+        jQuery(".foodworld-fancy-menu li.current-menu-parent a").click();
+    } else if (jQuery(".foodworld-fancy-menu li").first().children('ul.sub-menu').length > 0) {
+        jQuery(".foodworld-fancy-menu li").first().children('ul.sub-menu').slideDown();
+        jQuery(".foodworld-fancy-menu li").first().addClass('active');
     }
     /*Back To Top Start*/
     if (jQuery(".btn-top").length > 0) {

@@ -589,7 +589,7 @@
 })(jQuery);
 
 jQuery(document).ready(function() {
-        jQuery('#foodbakery-tags').tagit({
+        jQuery('#foodworld-tags').tagit({
            allowSpaces: true
         });
 });

@@ -137,9 +137,9 @@
 .main-search .field-holder input[type="text"] { height: 37px; border-radius: 4px; border: 0; padding: 10px 50px 10px 34px; line-height: 37px; }
 .main-search .field-holder span { position: absolute; line-height: 10px; color: #999ba3; z-index: 1; top: 50%; left: 15px; margin: -7px 0 0 0; }
 .main-search .field-holder span .icon-search5, .restaurant-search-element-container .search-by-location-icon { cursor: pointer; }
-.main-search .field-holder span.foodbakery-radius-location { left: auto; right: 15px; cursor: pointer; }
-.main-search .field-holder span.foodbakery-search-location-icon { left: 10px; cursor: pointer; }
-.main-search .field-holder span.foodbakery-input-cross { left: auto; right: 35px; font-size: 8px; line-height: 14px; cursor: pointer; }
+.main-search .field-holder span.foodworld-radius-location { left: auto; right: 15px; cursor: pointer; }
+.main-search .field-holder span.foodworld-search-location-icon { left: 10px; cursor: pointer; }
+.main-search .field-holder span.foodworld-input-cross { left: auto; right: 35px; font-size: 8px; line-height: 14px; cursor: pointer; }
 .main-search .field-holder input[type="text"]::-webkit-input-placeholder { color: #999ba3; text-transform: uppercase; }
 .main-search .field-holder input[type="text"]:-moz-placeholder { color: #999ba3; opacity: 1; text-transform: uppercase; }
 .main-search .field-holder input[type="text"]::-moz-placeholder { color: #999ba3; opacity: 1; text-transform: uppercase; }
@@ -162,9 +162,9 @@
 .main-search .field-holder .chosen-container .chosen-results li.highlighted { color: #fff; background-image: none; }
 .main-search .field-holder .chosen-container .chosen-results li { color: #999ba3; }
 .main-search .field-holder .chosen-container-single .chosen-single:before { position: absolute; color: #999ba3; line-height: 20px; font-size: 18px; top: 50%; right: 13px; margin: -10px 0 0 0; content: '\e956'; font-family: icomoon; z-index: 1; }
-.main-search .foodbakery-locations-ajax-list { position: absolute; width: 100%; height: auto; background: #fff; padding: 10px 15px; z-index: 3; }
-.main-search .foodbakery-locations-ajax-list li { list-style: none; color: #d1d1d1; }
-.main-search .foodbakery-locations-ajax-list li.no-location-found { color: #c33332; }
+.main-search .foodworld-locations-ajax-list { position: absolute; width: 100%; height: auto; background: #fff; padding: 10px 15px; z-index: 3; }
+.main-search .foodworld-locations-ajax-list li { list-style: none; color: #d1d1d1; }
+.main-search .foodworld-locations-ajax-list li.no-location-found { color: #c33332; }
 /* main-search.fancy Start */
 .main-search.fancy { margin-bottom: 40px; }
 .main-search.fancy.bg-holder { background-color: #c33332; padding: 20px 20px 0; }
@@ -184,8 +184,8 @@
 .main-search.fancy .field-holder input[type="text"]:focus::-webkit-input-placeholder { color: transparent; }
 .main-search.fancy .field-holder input[type="text"]::-webkit-input-placeholder { color: #d1d1d1; text-transform: uppercase; }
 .main-search.fancy .field-holder .select-location input[type="text"] { padding-left: 30px; }
-.main-search.fancy .field-holder .select-location #foodbakery-geo-location { left: 10px; }
-.main-search.fancy .field-holder .select-location span.foodbakery-input-cross { left: auto; right: 35px; font-size: 8px; margin: -6px 0 0 0; }
+.main-search.fancy .field-holder .select-location #foodworld-geo-location { left: 10px; }
+.main-search.fancy .field-holder .select-location span.foodworld-input-cross { left: auto; right: 35px; font-size: 8px; margin: -6px 0 0 0; }
 /* main-search.fancy End */
 /* Main Search Modern Start */
 .main-search.modern .field-holder input[type="text"] { height: 49px; color: #999; font-family: 'Roboto', sans-serif; }
@@ -200,7 +200,7 @@
 .main-search.classic .field-holder input[type="text"] { border-radius: 50px; font-size: 14px; height: 60px; line-height: 60px; padding-left: 50px; padding-right: 150px; }
 .main-search.classic .field-holder input[type="submit"] { font-size: 16px; color: #fff; position: absolute; right: 8px; top: 50%; min-width: 142px; height: 48px; border-radius: 30px; border: 0; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); transform: translateY(-50%); text-transform: uppercase; }
 .main-search.classic .field-holder .restaurant-element-search-btn { color: #cecece; left: 20px; font-size: 24px; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); transform: translateY(-50%); margin: 0; }
-.main-search.classic .field-holder span.foodbakery-radius-location { color: #cecece; font-size: 24px; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); transform: translateY(-50%); margin: 0; right: 165px; }
+.main-search.classic .field-holder span.foodworld-radius-location { color: #cecece; font-size: 24px; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); transform: translateY(-50%); margin: 0; right: 165px; }
 .main-search.classic .select-location .select-popup { top: 100%; border-radius: 0 0 10px 10px; margin-top: 8px; width: 77%; }
 .main-search.classic .select-location .slider.slider-horizontal { width: 85%; }
 .main-search.classic .field-holder input[type="text"]::-webkit-input-placeholder { color: #999; text-transform: capitalize; }
@@ -218,8 +218,8 @@
 /* Listing Filter style  */
 .listing-filter { display: inline-block; width: 100%; margin-bottom: 30px; }
 .listing-filter .filter-holder { margin-bottom: 13px; }
-.listing-filter .foodbakery_banner_section img, .section-sidebar .foodbakery_banner_section img { width: 100%; }
-.filters-sidebar .foodbakery_banner_section { width: 100%; margin-bottom: 20px; }
+.listing-filter .foodworld_banner_section img, .section-sidebar .foodworld_banner_section img { width: 100%; }
+.filters-sidebar .foodworld_banner_section { width: 100%; margin-bottom: 20px; }
 .listing-filter .filter-heading { display: block; padding: 9px 0px; border-top: 1px solid #e1e1e1; border-bottom: 1px solid #e1e1e1; margin-bottom: 20px; }
 .listing-filter .filter-heading h6 { margin: 0px; font-weight: 400; text-transform: uppercase; }
 .listing-filter .filter-heading h6 i { display: inline-block; font-size: 18px; color: #9f9f9f; vertical-align: middle; margin: -4px 9px 0 0; }
@@ -236,7 +236,7 @@
 .listing-filter .cuisines-holder .filter-list li { display: none; }
 .listing-filter .cuisines-holder .filter-list li:nth-child(1), .listing-filter .cuisines-holder .filter-list li:nth-child(2), .listing-filter .cuisines-holder .filter-list li:nth-child(3), .listing-filter .cuisines-holder .filter-list li:nth-child(4), .listing-filter .cuisines-holder .filter-list li:nth-child(5), .listing-filter .cuisines-holder .filter-list li.expand { display: block; }
 .listing-filter ul li .checkbox span { position: absolute; top: 50%; right: 0; -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); margin-top: -2px; }
-.restaurant-filters-ads .foodbakery_banner_section img { width: 100%; }
+.restaurant-filters-ads .foodworld_banner_section img { width: 100%; }
 /* .company-logo Start */
 .company-logo { margin: 0; }
 .company-logo .element-title.align-left { text-align: left; }
@@ -357,29 +357,29 @@
 .listing.user-suggest-list ul li .text-holder:only-child { width: 100%; }
 /* Listing style End */
 /* Listing Slider style Start */
-.wp-foodbakery .listing.grid-slider .list-post figure { overflow: hidden; position: relative; }
-.wp-foodbakery .listing.grid-slider .list-post figure a { position: relative; display: block; z-index: 1; }
-.wp-foodbakery .listing.grid-slider .list-post figure a:before { -webkit-transition: all .5s ease; -moz-transition: all .5s ease; transition: all .5s ease; content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #c33332; -webkit-transform: scale(0); -ms-transform: scale(0); -moz-transform: scale(0); transform: scale(0); pointer-events: none; }
-.wp-foodbakery .listing.grid-slider .list-post:hover figure a:before { opacity: .3; -webkit-transform: scale(1); -ms-transform: scale(1); -moz-transform: scale(1); transform: scale(1); }
-.wp-foodbakery .listing.grid-slider .restaurant-status { background: none; position: initial; font-size: 15px; color: #303030; font-weight: 600; padding: 0; }
-.wp-foodbakery .listing.grid-slider .restaurant-status:before { opacity: 0; visibility: hidden; }
-.wp-foodbakery .listing.grid-slider .list-post { border-bottom: 3px solid #ececec; padding-bottom: 12px; position: relative; }
-.wp-foodbakery .listing.grid-slider .list-post:before { position: absolute; left: 50%; bottom: -3px; height: 3px; background: #210606; content: ""; -webkit-transform: translateX(-50%); -ms-transform: translateX(-50%); -moz-transform: translateX(-50%); transform: translateX(-50%); -moz-transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; width: 35px; }
-.wp-foodbakery .listing.grid-slider .list-post:hover:before { width: 100%; }
-.wp-foodbakery .listing.grid-slider .sub-title { color: #a29c9c; font-size: 13px; font-weight: 400; display: block; line-height: normal; padding-top: 5px; }
-.wp-foodbakery .listing.grid-slider .text-holder { padding-top: 20px; }
-.wp-foodbakery .listing.grid-slider .text-holder .post-title { margin-bottom: 5px; }
-.wp-foodbakery .listing.grid-slider .text-holder .post-title h5 { margin-bottom: 0; }
-.wp-foodbakery .listing.grid-slider .delivery-potions i { height: 32px; width: 32px; line-height: 32px; }
-.wp-foodbakery .listing.grid-slider .delivery-potions { margin-bottom: 5px; }
-.wp-foodbakery .listing.grid-slider .list-rating span.reviews { color: #000; margin-left: 0; }
-.wp-foodbakery .listing.grid-slider .list-rating { margin-bottom: 20px; }
-.wp-foodbakery .listing.grid-slider address { font-size: 13px; color: #a29c9c; margin-bottom: 16px; }
-.wp-foodbakery .listing.grid-slider .location { font-size: 12px; color: #2f313a; display: block; margin-bottom: 12px; line-height: normal; }
-.wp-foodbakery .listing.grid-slider .post-time { margin-right: 4px; }
-.wp-foodbakery .listing.grid-slider .rating-star:before { content: "\eb9e\eb9e\eb9e\eb9e\eb9e"; font-size: 15px; letter-spacing: 2px; }
-.wp-foodbakery .listing.grid-slider .rating-star .rating-box:before { content: "\f005\f005\f005\f005\f005"; font-size: 15px; }
-.wp-foodbakery .listing.grid-slider li { list-style: none; }
+.wp-foodworld .listing.grid-slider .list-post figure { overflow: hidden; position: relative; }
+.wp-foodworld .listing.grid-slider .list-post figure a { position: relative; display: block; z-index: 1; }
+.wp-foodworld .listing.grid-slider .list-post figure a:before { -webkit-transition: all .5s ease; -moz-transition: all .5s ease; transition: all .5s ease; content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #c33332; -webkit-transform: scale(0); -ms-transform: scale(0); -moz-transform: scale(0); transform: scale(0); pointer-events: none; }
+.wp-foodworld .listing.grid-slider .list-post:hover figure a:before { opacity: .3; -webkit-transform: scale(1); -ms-transform: scale(1); -moz-transform: scale(1); transform: scale(1); }
+.wp-foodworld .listing.grid-slider .restaurant-status { background: none; position: initial; font-size: 15px; color: #303030; font-weight: 600; padding: 0; }
+.wp-foodworld .listing.grid-slider .restaurant-status:before { opacity: 0; visibility: hidden; }
+.wp-foodworld .listing.grid-slider .list-post { border-bottom: 3px solid #ececec; padding-bottom: 12px; position: relative; }
+.wp-foodworld .listing.grid-slider .list-post:before { position: absolute; left: 50%; bottom: -3px; height: 3px; background: #210606; content: ""; -webkit-transform: translateX(-50%); -ms-transform: translateX(-50%); -moz-transform: translateX(-50%); transform: translateX(-50%); -moz-transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; width: 35px; }
+.wp-foodworld .listing.grid-slider .list-post:hover:before { width: 100%; }
+.wp-foodworld .listing.grid-slider .sub-title { color: #a29c9c; font-size: 13px; font-weight: 400; display: block; line-height: normal; padding-top: 5px; }
+.wp-foodworld .listing.grid-slider .text-holder { padding-top: 20px; }
+.wp-foodworld .listing.grid-slider .text-holder .post-title { margin-bottom: 5px; }
+.wp-foodworld .listing.grid-slider .text-holder .post-title h5 { margin-bottom: 0; }
+.wp-foodworld .listing.grid-slider .delivery-potions i { height: 32px; width: 32px; line-height: 32px; }
+.wp-foodworld .listing.grid-slider .delivery-potions { margin-bottom: 5px; }
+.wp-foodworld .listing.grid-slider .list-rating span.reviews { color: #000; margin-left: 0; }
+.wp-foodworld .listing.grid-slider .list-rating { margin-bottom: 20px; }
+.wp-foodworld .listing.grid-slider address { font-size: 13px; color: #a29c9c; margin-bottom: 16px; }
+.wp-foodworld .listing.grid-slider .location { font-size: 12px; color: #2f313a; display: block; margin-bottom: 12px; line-height: normal; }
+.wp-foodworld .listing.grid-slider .post-time { margin-right: 4px; }
+.wp-foodworld .listing.grid-slider .rating-star:before { content: "\eb9e\eb9e\eb9e\eb9e\eb9e"; font-size: 15px; letter-spacing: 2px; }
+.wp-foodworld .listing.grid-slider .rating-star .rating-box:before { content: "\f005\f005\f005\f005\f005"; font-size: 15px; }
+.wp-foodworld .listing.grid-slider li { list-style: none; }
 .grid-slider .swiper-button-prev, .grid-slider .swiper-button-next { background-image: none; font-size: 26px; color: #dcdcdc; top: -40px; }
 .grid-slider .swiper-button-prev { right: 65px; left: auto; }
 .grid-slider .swiper-button-prev i, .grid-slider .swiper-button-next i { -webkit-transition: all .5s ease; -moz-transition: all .5s ease; transition: all .5s ease; }
@@ -759,12 +759,12 @@ ul.sub-nav li a { line-height: 20px; }
 .menu-itam-holder .menu-itam-list .price-holder { top: 50%; position: absolute; right: 0; -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); line-height: 0; display: block; margin-top: -10px; }
 .menu-itam-holder .menu-itam-list .price-holder span.price { font-size: 14px; color: #2f313a; font-family: 'Montserrat', sans-serif; vertical-align: middle; }
 .menu-itam-holder .menu-itam-list .price-holder a { position: relative; display: inline-block; outline: none; text-decoration: none; -webkit-box-shadow: none; box-shadow: none; }
-.menu-itam-holder .menu-itam-list .price-holder a .foodbakery-button-loader { width: 22px; right: 0; left: auto; border-radius: 50%; }
-.menu-itam-holder .menu-itam-list .price-holder a .foodbakery-button-loader .double-bounce1, .menu-itam-holder .menu-itam-list .price-holder a .foodbakery-button-loader .double-bounce2 { left: -1px; }
+.menu-itam-holder .menu-itam-list .price-holder a .foodworld-button-loader { width: 22px; right: 0; left: auto; border-radius: 50%; }
+.menu-itam-holder .menu-itam-list .price-holder a .foodworld-button-loader .double-bounce1, .menu-itam-holder .menu-itam-list .price-holder a .foodworld-button-loader .double-bounce2 { left: -1px; }
 .menu-itam-holder .menu-itam-list .price-holder a i { font-size: 14px; vertical-align: middle; margin: 0 0 0 28px; border: 1px solid; border-radius: 50%; height: 22px; width: 22px; text-align: center; line-height: 21px; display: inline-block; }
 .menu-itam-holder .menu-itam-list .price-holder a + span { position: absolute; top: 4px; right: -20px; }
-.menu-itam-holder .menu-itam-list .price-holder a .foodbakery-button-loader .double-bounce2, .menu-itam-holder .menu-itam-list .price-holder a .foodbakery-button-loader .double-bounce1 { position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; width: 20px; height: 20px; -webkit-animation: sk-bounce-small 1.0s infinite ease-in-out; -moz-animation: sk-bounce-small 1.0s infinite ease-in-out; animation: sk-bounce-small 1.0s infinite ease-in-out; }
-.menu-itam-holder .menu-itam-list .price-holder a .foodbakery-button-loader .spinner { width: 20px; }
+.menu-itam-holder .menu-itam-list .price-holder a .foodworld-button-loader .double-bounce2, .menu-itam-holder .menu-itam-list .price-holder a .foodworld-button-loader .double-bounce1 { position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; width: 20px; height: 20px; -webkit-animation: sk-bounce-small 1.0s infinite ease-in-out; -moz-animation: sk-bounce-small 1.0s infinite ease-in-out; animation: sk-bounce-small 1.0s infinite ease-in-out; }
+.menu-itam-holder .menu-itam-list .price-holder a .foodworld-button-loader .spinner { width: 20px; }
 @-webkit-keyframes sk-bounce-small { 0%, 100% { -webkit-transform: scale(0);
     transform: scale(0); }
   50% { -webkit-transform: scale(0.7);
@@ -873,8 +873,8 @@ ul.sub-nav li a { line-height: 20px; }
 .user-order .pay-option li i { display: block; font-size: 20px; color: #bdbec2; padding: 0 0 5px 0; }
 .user-order input[type="submit"], .user-order .menu-order-confirm { background-color: #c33332; border: none; display: block; border-radius: 3px; color: #fff; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: normal; padding: 8px 10px; text-transform: uppercase; width: 100%; text-align: center; }
 /*DashBoard Loader Start*/
-.user-dashboard .foodbakery_loader { position: absolute; top: 0; left: 0; width: 100%; height: 3px; top: -3px; z-index: 35; -webkit-animation: 0.6s ease-out 0s normal none 1 running fullexpand; -moz-animation: 0.6s ease-out 0s normal none 1 running fullexpand; animation: 0.6s ease-out 0s normal none 1 running fullexpand; background-color: #c33332; }
-.user-dashboard .foodbakery_loader .loader-img i { display: none; font-size: 30px; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); line-height: 0; }
+.user-dashboard .foodworld_loader { position: absolute; top: 0; left: 0; width: 100%; height: 3px; top: -3px; z-index: 35; -webkit-animation: 0.6s ease-out 0s normal none 1 running fullexpand; -moz-animation: 0.6s ease-out 0s normal none 1 running fullexpand; animation: 0.6s ease-out 0s normal none 1 running fullexpand; background-color: #c33332; }
+.user-dashboard .foodworld_loader .loader-img i { display: none; font-size: 30px; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); line-height: 0; }
 /*DashBoard Loader End*/
 /* User Message Style Start*/
 .user-message, .user-message.alert { background: #2b8dc4; padding: 35px; margin: 0 0 30px; border-radius: 3px; position: relative; -webkit-box-shadow: none; box-shadow: none; }
@@ -894,8 +894,8 @@ ul.sub-nav li a { line-height: 20px; }
 .user-notification ul li em { color: #a3a7ab; font-size: 12px; line-height: 22px; display: inline-block; vertical-align: middle; padding: 0 0 0 20px; font-style: normal; font-family: 'Karla', sans-serif; }
 .user-notification ul li a { line-height: 22px; font-size: 13px; font-family: 'Karla', sans-serif; color: #4a95d2; text-decoration: underline; outline: none; margin: 0; padding: 0; border: 0; text-transform: capitalize; }
 .user-notification ul li .close { font-size: 18px; color: #ff2727; opacity: 1; line-height: 26px; text-decoration: none; }
-.user-notification .foodbakery-clear-notifications { text-align: right; }
-.user-notification .foodbakery-clear-notifications a { color: #4a95d2; }
+.user-notification .foodworld-clear-notifications { text-align: right; }
+.user-notification .foodworld-clear-notifications a { color: #4a95d2; }
 /* User Notification Style End */
 /* Update Attachment Style Start*/
 .update-attachment { border: 2px dashed #eee; border-radius: 5px; margin: 10px auto; padding: 30px 50px; text-align: center; position: relative; width: 542px; }
@@ -912,8 +912,8 @@ ul.sub-nav li a { line-height: 20px; }
 .update-attachment .list-inline li.close-btn a { background-color: #000; border-radius: 100%; color: #fff; display: inline-block; font-size: 10px; height: 18px; line-height: 18px; text-align: center; width: 18px; }
 /*Button Bg Color*/
 .upload-gallery .upload-btn { background-color: #d6d6d6; border-radius: 3px; color: #fff; font-size: 13px; line-height: normal; padding: 8px 20px; position: absolute; right: 0; top: -48px; }
-.upload-gallery .upload-btn, .switchs-holder2 .acc-submit, .foodbakery-dev-appended .add-service, .book-btn, .foodbakery-pkg-header .pkg-detail-btn a, .pkg-choose-btn, .add-menu-item, .opt-conts .search-location-map.input-button-loader .acc-submit { background: #3ab54b; }
-.upload-gallery .upload-btn:hover, .switchs-holder2 .acc-submit:hover, .foodbakery-dev-appended .add-service:hover, .book-btn:hover, .foodbakery-pkg-header .pkg-detail-btn a:hover, .pkg-choose-btn:hover, .add-menu-item:hover, .opt-conts .search-location-map.input-button-loader .acc-submit:hover { background-color: #62d773; }
+.upload-gallery .upload-btn, .switchs-holder2 .acc-submit, .foodworld-dev-appended .add-service, .book-btn, .foodworld-pkg-header .pkg-detail-btn a, .pkg-choose-btn, .add-menu-item, .opt-conts .search-location-map.input-button-loader .acc-submit { background: #3ab54b; }
+.upload-gallery .upload-btn:hover, .switchs-holder2 .acc-submit:hover, .foodworld-dev-appended .add-service:hover, .book-btn:hover, .foodworld-pkg-header .pkg-detail-btn a:hover, .pkg-choose-btn:hover, .add-menu-item:hover, .opt-conts .search-location-map.input-button-loader .acc-submit:hover { background-color: #62d773; }
 /* Update Attachment Style End*/
 /* Tag Cloud Style Start*/
 .user-holder .most-used { display: block; position: relative; color: #2f313a; font-size: 12px; line-height: 18px; margin-bottom: 8px; }
@@ -946,15 +946,15 @@ ul.checkbox-list li { margin-bottom: 22px; line-height: normal; margin-right: -4
 .upload-gallery .jFiler-item-info { display: none; }
 .upload-gallery .upload-btn { border-radius: 3px; color: #fff; font-size: 13px; line-height: normal; padding: 8px 20px; position: absolute; right: 0; top: -48px; }
 .upload-gallery .upload-btn i { margin-right: 8px; }
-.user-holder .foodbakery-gallery-holder { margin: 0 -20px; }
-.user-holder .foodbakery-gallery-holder li.gal-img { border: 10px solid #fff; -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); display: inline-block; margin: 0 0 20px 20px; vertical-align: top; max-width: 175px !important; height: 180px !important; background: #FFFFFF; }
-.user-holder .foodbakery-gallery-holder li.gal-img .item-thumb { height: 138px; overflow: hidden; position: relative; width: 155px; }
-.user-holder .foodbakery-gallery-holder .drag-btn { float: left; }
-.user-holder .foodbakery-gallery-holder .drag-btn a { color: #999; font-size: 14px; }
-.user-holder .foodbakery-gallery-holder .close-btn { float: right; }
+.user-holder .foodworld-gallery-holder { margin: 0 -20px; }
+.user-holder .foodworld-gallery-holder li.gal-img { border: 10px solid #fff; -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); display: inline-block; margin: 0 0 20px 20px; vertical-align: top; max-width: 175px !important; height: 180px !important; background: #FFFFFF; }
+.user-holder .foodworld-gallery-holder li.gal-img .item-thumb { height: 138px; overflow: hidden; position: relative; width: 155px; }
+.user-holder .foodworld-gallery-holder .drag-btn { float: left; }
+.user-holder .foodworld-gallery-holder .drag-btn a { color: #999; font-size: 14px; }
+.user-holder .foodworld-gallery-holder .close-btn { float: right; }
 li.gal-img.ui-sortable-placeholder, li.ui-sortable-placeholder { background: #EEE !important; visibility: visible !important; }
-.user-holder .foodbakery-gallery-holder img { width: auto; }
-.user-holder .foodbakery-gallery-holder li.gal-img .item-thumb img { max-width: 100%; margin: 0 auto; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); -webkit-box-shadow: none; box-shadow: none; border: 0; }
+.user-holder .foodworld-gallery-holder img { width: auto; }
+.user-holder .foodworld-gallery-holder li.gal-img .item-thumb img { max-width: 100%; margin: 0 auto; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); -webkit-box-shadow: none; box-shadow: none; border: 0; }
 .user-holder .item-assts .list-inline.pull-right { margin: 0; padding: 10px 0 0; width: 100%; line-height: 0; }
 .user-holder .list-inline li { line-height: normal; float: left; padding: 0; }
 .user-holder .list-inline > li a { color: #999; }
@@ -1012,26 +1012,26 @@ li.gal-img.ui-sortable-placeholder, li.ui-sortable-placeholder { background: #EE
 .payment-holder input[type="submit"] { margin: 20px 0 0; }
 .payment-holder.input-button-loader input[type="submit"] { margin-top: 0; }
 /*Membership Info Start*/
-.foodbakery-pkg-header { border: 1px solid #f4f4f4; background: #FFFFFF; padding: 12px 26px; }
-.foodbakery-pkg-header.foodbakery-pkg-active { background: #b7b7b7; }
-.foodbakery-pkg-header:after { clear: both; display: block; content: ""; }
-.foodbakery-pkg-header .pkg-title-price label.pkg-title { margin: 0 29px 0 0; color: #333333; font-size: 14px; font-weight: 600; }
-.foodbakery-pkg-header.foodbakery-pkg-active .pkg-title-price label.pkg-title, .foodbakery-pkg-header.foodbakery-pkg-active .pkg-title-price span.pkg-price { color: #FFFFFF; }
-.foodbakery-pkg-header .pkg-title-price span.pkg-price { font-size: 14px; color: #4a4a4a; font-weight: 400; display: inline-block; vertical-align: middle; line-height: 32px; }
-.foodbakery-pkg-header .pkg-detail-btn input { display: none; }
-.foodbakery-pkg-header .pkg-detail-btn a, .pkg-cancel-btn, .pkg-choose-btn, .add-menu-item, .opt-conts .search-location-map.input-button-loader .acc-submit { border: 0 none; border-radius: 2px; color: #fff; display: inline-block; font-family: "Karla", sans-serif; font-size: 13px; font-weight: 400; line-height: 28px; margin: 0; outline: none; padding: 2px 25px; text-decoration: none; text-transform: capitalize; }
-.foodbakery-pkg-header .pkg-detail-btn a:hover, .pkg-cancel-btn:hover, .pkg-choose-btn:hover, .add-menu-item:hover, .add-menu-item:focus { color: #FFFFFF; }
+.foodworld-pkg-header { border: 1px solid #f4f4f4; background: #FFFFFF; padding: 12px 26px; }
+.foodworld-pkg-header.foodworld-pkg-active { background: #b7b7b7; }
+.foodworld-pkg-header:after { clear: both; display: block; content: ""; }
+.foodworld-pkg-header .pkg-title-price label.pkg-title { margin: 0 29px 0 0; color: #333333; font-size: 14px; font-weight: 600; }
+.foodworld-pkg-header.foodworld-pkg-active .pkg-title-price label.pkg-title, .foodworld-pkg-header.foodworld-pkg-active .pkg-title-price span.pkg-price { color: #FFFFFF; }
+.foodworld-pkg-header .pkg-title-price span.pkg-price { font-size: 14px; color: #4a4a4a; font-weight: 400; display: inline-block; vertical-align: middle; line-height: 32px; }
+.foodworld-pkg-header .pkg-detail-btn input { display: none; }
+.foodworld-pkg-header .pkg-detail-btn a, .pkg-cancel-btn, .pkg-choose-btn, .add-menu-item, .opt-conts .search-location-map.input-button-loader .acc-submit { border: 0 none; border-radius: 2px; color: #fff; display: inline-block; font-family: "Karla", sans-serif; font-size: 13px; font-weight: 400; line-height: 28px; margin: 0; outline: none; padding: 2px 25px; text-decoration: none; text-transform: capitalize; }
+.foodworld-pkg-header .pkg-detail-btn a:hover, .pkg-cancel-btn:hover, .pkg-choose-btn:hover, .add-menu-item:hover, .add-menu-item:focus { color: #FFFFFF; }
 .add-menu-item { float: right; position: relative; }
 a.add-menu-item.collapsed:not(.add-menu-item-list) { display: inline-block; }
 a.add-menu-item:not(.add-menu-item-list) { display: none; }
-.foodbakery-pkg-header .pkg-detail-btn a:hover, .pkg-choose-btn:hover, .pkg-cancel-btn:hover, .foodbakery-pkg-header .pkg-detail-btn a:focus, .pkg-choose-btn:focus, .pkg-cancel-btn:focus { color: #FFFFFF; }
-.foodbakery-pkg-holder { margin-bottom: 20px; }
+.foodworld-pkg-header .pkg-detail-btn a:hover, .pkg-choose-btn:hover, .pkg-cancel-btn:hover, .foodworld-pkg-header .pkg-detail-btn a:focus, .pkg-choose-btn:focus, .pkg-cancel-btn:focus { color: #FFFFFF; }
+.foodworld-pkg-holder { margin-bottom: 20px; }
 .package-info-sec.restaurant-info-sec { background: #fafafa; border: 1px solid #f4f4f4; padding: 29px; margin-bottom: 20px; border-top: 0; }
-.user-holder form ul li.listing-info-holder, .user-holder form ul li.foodbakery-type-holder { background: #fafafa; }
+.user-holder form ul li.listing-info-holder, .user-holder form ul li.foodworld-type-holder { background: #fafafa; }
 .buy-new-pakg-actions { position: absolute; top: 0px; right: 15px; line-height: 20px; }
 .buy-new-pakg-actions label a { font-size: 14px; line-height: 20px; letter-spacing: 0; text-transform: capitalize; color: #53b6eb; border-bottom: 1px solid #53b6eb; font-weight: normal; }
-.buy-new-pakg-actions label, .buy-new-pakg-actions a.foodbakery-dev-cancel-pkg { display: inline-block; vertical-align: middle; margin: 0; color: #b1b1b1; }
-.buy-new-pakg-actions a.foodbakery-dev-cancel-pkg { margin-left: 10px; position: relative; top: 4px; }
+.buy-new-pakg-actions label, .buy-new-pakg-actions a.foodworld-dev-cancel-pkg { display: inline-block; vertical-align: middle; margin: 0; color: #b1b1b1; }
+.buy-new-pakg-actions a.foodworld-dev-cancel-pkg { margin-left: 10px; position: relative; top: 4px; }
 .packages-main-holder { position: relative; }
 /*Listing Info Start*/
 .restaurant-info-sec ul { margin: 0; padding: 0; }
@@ -1047,7 +1047,7 @@ a.add-menu-item:not(.add-menu-item-list) { display: none; }
 .restaurant-update-package { background-color: #5cb85c; border: medium none; border-radius: 3px; color: #fff; font-weight: 700; margin: 20px 0 0; padding: 6px 18px; text-transform: uppercase; display: inline-block; }
 .restaurant-update-package:hover { color: #FFFFFF; }
 /*Listing Info End*/
-.foodbakery-dev-appended .add-service.add-service-list, .listing-update-package, .pkg-choose-btn { background: #4a95d2; }
+.foodworld-dev-appended .add-service.add-service-list, .listing-update-package, .pkg-choose-btn { background: #4a95d2; }
 /* Calender Style */
 .responsive-calendar { border: none; float: left; width: 100%; }
 .responsive-calendar .availability { font-size: 12px; color: #484848; font-weight: bold; padding-top: 2px; display: inline-block; }
@@ -1068,11 +1068,11 @@ a.add-menu-item:not(.add-menu-item-list) { display: none; }
 .responsive-calendar .btn-primary { color: #484848; font-size: 20px; background: none; border: none; -webkit-box-shadow: none; box-shadow: none; text-shadow: none; padding: 2px 0 0 0; }
 .responsive-calendar .btn-primary:active:hover, .responsive-calendar .btn-primary:active.focus { color: #484848; background: none; }
 /* Calender Style End */
-.user-dashboard ul li.foodbakery-type-holder { padding: 16px 16px 0 16px; }
+.user-dashboard ul li.foodworld-type-holder { padding: 16px 16px 0 16px; }
 /* Add Service Style */
 .add-service { background-color: #d6d6d6; border-radius: 3px; color: #fff; float: right; font-size: 13px; line-height: normal; padding: 7px 20px; text-decoration: none; outline: none; }
-.foodbakery-dev-appended .element-title .add-service { margin-bottom: 0; }
-.foodbakery-dev-appended .add-service { margin-bottom: 20px; }
+.foodworld-dev-appended .element-title .add-service { margin-bottom: 0; }
+.foodworld-dev-appended .add-service { margin-bottom: 20px; }
 .add-service:hover, .add-service:focus { color: #fff; }
 .service-list { margin-bottom: 10px; }
 .service-list ul { margin: 0; padding: 0; }
@@ -1199,13 +1199,13 @@ a.add-menu-item:not(.add-menu-item-list) { display: none; }
 .modal-content .save-search-criteria.input-button-loader { display: block; }
 .search-location-map.input-button-loader { margin-top: 10px; }
 .switchs-holder2 .search-location-map.input-button-loader .acc-submit { margin-top: 0; }
-.search-location-map.input-button-loader .foodbakery-button-loader { border-radius: 4px; }
+.search-location-map.input-button-loader .foodworld-button-loader { border-radius: 4px; }
 .search-location-map.input-button-loader { position: relative; display: inline-block; }
-.foodbakery-button-loader { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #f97456; text-align: center; border-radius: 3px; display: none; }
-.foodbakery-button-loader .spinner { width: 25px; height: 25px; position: absolute; display: inline-block; top: 0; bottom: 0; left: 0; right: 0; margin: auto; }
-.foodbakery-button-loader .double-bounce1, .foodbakery-button-loader .double-bounce2 { width: 100%; height: 100%; border-radius: 50%; background-color: #fff; opacity: 0.6; position: absolute; top: 0; left: 0; -webkit-animation: sk-bounce 2.0s infinite ease-in-out; -moz-animation: sk-bounce 2.0s infinite ease-in-out; animation: sk-bounce 2.0s infinite ease-in-out; }
-.foodbakery-processing { pointer-events: none; }
-.foodbakery-button-loader .double-bounce2 { -webkit-animation-delay: -1.0s; -moz-animation-delay: -1.0s; animation-delay: -1.0s; }
+.foodworld-button-loader { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #f97456; text-align: center; border-radius: 3px; display: none; }
+.foodworld-button-loader .spinner { width: 25px; height: 25px; position: absolute; display: inline-block; top: 0; bottom: 0; left: 0; right: 0; margin: auto; }
+.foodworld-button-loader .double-bounce1, .foodworld-button-loader .double-bounce2 { width: 100%; height: 100%; border-radius: 50%; background-color: #fff; opacity: 0.6; position: absolute; top: 0; left: 0; -webkit-animation: sk-bounce 2.0s infinite ease-in-out; -moz-animation: sk-bounce 2.0s infinite ease-in-out; animation: sk-bounce 2.0s infinite ease-in-out; }
+.foodworld-processing { pointer-events: none; }
+.foodworld-button-loader .double-bounce2 { -webkit-animation-delay: -1.0s; -moz-animation-delay: -1.0s; animation-delay: -1.0s; }
 @-webkit-keyframes sk-bounce { 0%, 100% { -webkit-transform: scale(0);
     transform: scale(0); }
   50% { -webkit-transform: scale(1);
@@ -1610,7 +1610,7 @@ span.sticky-stop { position: relative; top: -49px; }
 .sticky-wrpper { position: relative; }
 .field-holder .frontend-field-error, .frontend-field-error, .user-dashboard .frontend-field-error .chosen-choices, .frontend-field-error .chosen-single { border-color: #FF0000 !important; }
 .modal-open { overflow: visible; padding: 0 !important; }
-.foodbakery-dev-appended-cats { margin-bottom: 20px; }
+.foodworld-dev-appended-cats { margin-bottom: 20px; }
 .user-dashboard .earning-calculation { margin-bottom: 30px; }
 .earning-calculation li { line-height: 22px; color: #484848; margin-bottom: 8px; }
 .earning-calculation li strong { display: inline-block; margin-left: 10px; }
@@ -1648,7 +1648,7 @@ span.sticky-stop { position: relative; top: -49px; }
 .not-found p { display: inline-block; line-height: 18px; margin-bottom: 0; vertical-align: middle; }
 .user-reviews-list .reviews-list > li.not-found { padding: 10px; }
 /* warning message*/
-.wp-foodbakery #id_confrmdiv { background-color: rgba(0, 0, 0, 0.5) !important; border: 0px solid #aaa !important; border-radius: 0px !important; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; height: 100% !important; left: 0 !important; margin-left: 0px !important; padding: 0 !important; position: fixed !important; text-align: center !important; top: 0 !important; width: 100% !important; z-index: 9; }
+.wp-foodworld #id_confrmdiv { background-color: rgba(0, 0, 0, 0.5) !important; border: 0px solid #aaa !important; border-radius: 0px !important; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; height: 100% !important; left: 0 !important; margin-left: 0px !important; padding: 0 !important; position: fixed !important; text-align: center !important; top: 0 !important; width: 100% !important; z-index: 9; }
 .cs-confirm-container { background: #fff; width: 480px; margin: 0 auto; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); padding: 15px 70px; border-radius: 4px; }
 .cs-confirm-container i { display: inline-block; font-size: 70px; margin-bottom: 14px; opacity: 0.6; color: #555555; }
 .cs-confirm-container .message { font-size: 24px; }
@@ -1662,7 +1662,7 @@ a#id_falsebtn { background: #d0d0d0; margin-left: 6px; }
 .user-dashboard .restaurant-settings-nav li .user_dashboard_ajax { display: none; }
 .chosen-container-single .chosen-single div b { background-image: none; }
 #dev-menu-orders-list .categories-order a.btn-cross { margin-top: 0; }
-.wp-foodbakery.woocommerce-page .main-section:after { content: ""; display: block; clear: both; }
+.wp-foodworld.woocommerce-page .main-section:after { content: ""; display: block; clear: both; }
 .woocommerce-checkout .cs-rich-editor .woocommerce .woocommerce-checkout { width: 100%; margin: 0 auto 30px; background: #fff; padding: 0; padding-bottom: 0; }
 .woocommerce-checkout .cs-rich-editor .woocommerce .woocommerce-checkout h3 { text-align: left; width: 100%; margin: 0 auto 10px; }
 .woocommerce-checkout .cs-rich-editor .woocommerce .checkout.woocommerce-checkout table.shop_table { float: none; margin: 0 auto 30px; width: 100%; }
@@ -1672,8 +1672,8 @@ a#id_falsebtn { background: #d0d0d0; margin-left: 6px; }
 .woocommerce-checkout .cs-rich-editor .woocommerce .woocommerce-checkout #payment div.payment_box p { position: relative; background: #828282; color: #fcfcfc !important; padding: 6px 10px; }
 .woocommerce-checkout .cs-rich-editor .woocommerce .woocommerce-checkout #payment div.payment_box p:after { content: ""; position: absolute; top: -5px; left: 10px; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 5px solid #828282; }
 .woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .woocommerce #respond input[type="submit"] { letter-spacing: 1px; text-transform: uppercase; background-color: #c33332; font-family: "Open Sans", sans-serif; }
-.wp-foodbakery .woocommerce-ResetPassword.lost_reset_password { background-color: rgba(0, 0, 0, 0.04); padding: 20px; margin-bottom: 30px; }
-.wp-foodbakery .woocommerce .woocommerce-ResetPassword button.button { border: 0; color: #fff; text-transform: capitalize; line-height: normal; height: auto; font-size: 13px; padding: 10px 15px; }
+.wp-foodworld .woocommerce-ResetPassword.lost_reset_password { background-color: rgba(0, 0, 0, 0.04); padding: 20px; margin-bottom: 30px; }
+.wp-foodworld .woocommerce .woocommerce-ResetPassword button.button { border: 0; color: #fff; text-transform: capitalize; line-height: normal; height: auto; font-size: 13px; padding: 10px 15px; }
 /*Dashboard Results Not Found Start*/
 .results-not-found { position: relative; padding: 0 20px 0; font-size: 14px; line-height: 20px; margin-bottom: 30px; }
 .results-not-found p { margin-bottom: 0; }
@@ -1688,7 +1688,7 @@ a#id_falsebtn { background: #d0d0d0; margin-left: 6px; }
 .restaurant-menu-nav.nav-tabs > li a:after, .restaurant-menu-nav.nav-tabs > li a:after, .restaurant-menu-nav.nav-tabs > li.active a:after { -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; position: absolute; bottom: -1px; left: 0; width: 100%; height: 10%; background: #fff; content: ""; opacity: 0; visibility: hidden; }
 .restaurant-menu-nav.nav-tabs > li.active a:after { opacity: 1; visibility: visible; }
 /*Restaurant Menu Sub Nav End*/
-#foodbakery-dev-main-con- .close-menu-item { position: absolute; top: -10px; right: 15px; color: #c33332; cursor: pointer; display: inline-block; z-index: 10; }
+#foodworld-dev-main-con- .close-menu-item { position: absolute; top: -10px; right: 15px; color: #c33332; cursor: pointer; display: inline-block; z-index: 10; }
 /*Reviews Style*/
 .reviews-holder .pagination { padding: 0; margin: 0 0 10px 0; }
 .reviews-holder .pagination li.disabled { display: none; }
@@ -1864,21 +1864,21 @@ div.daterangepicker { border: 1px solid #eceef4; -webkit-box-shadow: none; box-s
 /*Radio Style End*/
 .user-dashboard .has-seperator > li { margin-bottom: 20px; padding-bottom: 10px; position: relative; }
 .user-dashboard .has-seperator > li:after { content: ""; border-bottom: 3px solid #eeeeee; position: absolute; bottom: 0; left: 0; width: 100%; width: -webkit-calc(100% - 30px); width: -moz-calc(75% - 30px); width: -moz-calc(100% - 30px); width: calc(100% - 30px); right: 0; margin: 0 auto; }
-.user-dashboard .has-seperator .foodbakery-dev-appended-cats { margin-bottom: 0; }
+.user-dashboard .has-seperator .foodworld-dev-appended-cats { margin-bottom: 0; }
 .opt-conts .search-location-map.input-button-loader .acc-submit { min-height: 40px; }
 /*Restaurant Info Style Start*/
 .restaurant-info { position: relative; margin-bottom: 45px; }
 .restaurant-info:after { clear: both; display: block; content: ""; }
-.user-holder .restaurant-info .foodbakery-gallery-holder { margin: 0; position: relative; z-index: 2; }
+.user-holder .restaurant-info .foodworld-gallery-holder { margin: 0; position: relative; z-index: 2; }
 .restaurant-info .img-holder { width: 120px; height: 120px; border-radius: 3px; border: solid 1px #e5e5e5; margin-right: 25px; float: left; overflow: hidden; position: relative; }
 .restaurant-info .img-holder:after { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #f6f6f6; content: "\eac0"; text-align: center; line-height: 120px; font-family: 'icomoon'; font-size: 50px; }
 .restaurant-info .img-holder .item-assts { position: absolute; top: 0; right: 4px; }
 .user-holder .restaurant-info .img-holder .item-assts .list-inline.pull-right { margin: 0; padding: 0; width: 100%; line-height: 0; }
-.user-holder .restaurant-info .img-holder .foodbakery-gallery-holder .close-btn { float: right; margin: 0; line-height: normal; }
-.restaurant-info .img-holder li.gal-img, .user-holder .img-holder .foodbakery-gallery-holder li.gal-img { margin: 0; width: 100% !important; height: 100% !important; border: none; -webkit-box-shadow: none; box-shadow: none; max-width: 100% !important; }
-.restaurant-info .img-holder li.gal-img img, .user-holder .img-holder .foodbakery-gallery-holder li.gal-img img { min-height: 118px; position: static; border-radius: 3px; top: 0; left: 0; -webkit-transform: translate(0); -moz-transform: translate(0); -ms-transform: translate(0); transform: translate(0); }
+.user-holder .restaurant-info .img-holder .foodworld-gallery-holder .close-btn { float: right; margin: 0; line-height: normal; }
+.restaurant-info .img-holder li.gal-img, .user-holder .img-holder .foodworld-gallery-holder li.gal-img { margin: 0; width: 100% !important; height: 100% !important; border: none; -webkit-box-shadow: none; box-shadow: none; max-width: 100% !important; }
+.restaurant-info .img-holder li.gal-img img, .user-holder .img-holder .foodworld-gallery-holder li.gal-img img { min-height: 118px; position: static; border-radius: 3px; top: 0; left: 0; -webkit-transform: translate(0); -moz-transform: translate(0); -ms-transform: translate(0); transform: translate(0); }
 .restaurant-info .img-holder > ul { position: relative; height: 100%; }
-.user-holder .img-holder .foodbakery-gallery-holder li.gal-img .item-thumb, .img-holder .foodbakery-gallery-holder li.gal-img .item-thumb { height: 100%; overflow: hidden; position: relative; width: 100%; }
+.user-holder .img-holder .foodworld-gallery-holder li.gal-img .item-thumb, .img-holder .foodworld-gallery-holder li.gal-img .item-thumb { height: 100%; overflow: hidden; position: relative; width: 100%; }
 .restaurant-info .text-holder { float: left; width: 60%; width: -webkit-calc(100% - 155px); width: -moz-calc(75% - 155px); width: -moz-calc(100% - 155px); width: calc(100% - 155px); }
 .restaurant-info .text-holder .upload-gallery { margin-bottom: 15px; }
 .restaurant-info .text-holder .upload-gallery .upload-btn { border-radius: 3px; color: #fff; font-size: 13px; line-height: normal; padding: 8px 20px; position: static; right: 0; top: -48px; }
@@ -1978,7 +1978,7 @@ div.daterangepicker { border: 1px solid #eceef4; -webkit-box-shadow: none; box-s
 .listing.fancy-simple .restaurant-status { top: 5px; }
 .browse-btn-sec .browse-menu-icon-img { color: #fff; min-height: 39px; line-height: 39px; padding-top: 0; padding-bottom: 0; }
 .daterangepicker.ltr .calendar.right { margin-right: 0; }
-.wp-foodbakery .woocommerce button.button.alt:hover { background-color: #c33332; }
+.wp-foodworld .woocommerce button.button.alt:hover { background-color: #c33332; }
 
 
 /* COLOR START */
@@ -1995,16 +1995,16 @@ div.daterangepicker { border: 1px solid #eceef4; -webkit-box-shadow: none; box-s
 .main-header.transparent .main-location ul li ul li .has-child li a:hover, .order-sort-results ul li.active a, .listing-filter .expand, #footer .footer-widget .widget a:hover, .order-sort-results ul li.active a, ul.dashboard-nav li a:hover, .upload-file button[type='button'], .user-dashboard-menu > ul > li > ul li.user-add-restaurant > a, .widget_tag_cloud .tagcloud a:hover, .page-not-found .cs-text span.cs-error, .widget.widget_nav_menu ul li a:hover, .widget.widget-categories li a:hover, .widget.widget_categories li a:hover, .widget.widget_pages ul li a:hover, .widget.widget_archive li a:hover,
 .widget.widget_meta li a:hover, .widget.widget_nav_menu ul li a:hover:before, .widget.widget-categories li a:hover:before, .widget.widget-archives ul li a:hover,
 .widget.widget_categories li:hover:before, .widget.widget_pages ul li:hover:before, .widget.widget_archive li:hover:before,.site-maps-links ul li:hover a, .widget.widget-archives ul li:hover a:before, .widget.twitter-post li p a, .widget.widget_recent_comments li a:hover, .widget.widget_rss li .rsswidget:hover, .cs-construction .time-box h4, .listing .list-option .viewmenu-btn, .restaurant-menu-nav.nav-tabs > li.active a, .user-nav-list ul li.active a, .user-nav-list ul li.active i, .categories-order li li:after, .listing.fancy-simple .delivery-potions i, .listing.grid-listing .min-order, .listing.grid-listing .listing-footer .text-holder p.deliver-time span, .listing.grid-listing .listing-footer .text-holder p.pickup-time span, .transparent-header .main-header .login-option a.login-popup, .copy-right p a, .blog-medium .read-more i, .related-post .read-more, .user-suggest-list > .element-title > h5 + span em, .listing.grid-listing h4 a:hover, .listing.grid-listing .listing-footer a.ordernow-btn:hover, .transparent-header .main-header .login-option a.get-start-btn:hover, .categories-menu li.active a,
-.company-holder.fancy .rating-star .rating-box:before, .company-holder.fancy .fancy-button-prev:hover i, .company-holder.fancy .fancy-button-next:hover i, .company-rating .list-option .shortlist-btn i, .wp-foodbakery .listing.grid-slider:hover .restaurant-status, #footer.footer-style-4 .widget-connect ul li span i,
-.wp-foodbakery .listing.grid-slider .rating-star .rating-box:before, .location-holder.modern a.more-btn, .grid-slider .swiper-button-prev:hover i, .grid-slider .swiper-button-next:hover i,
+.company-holder.fancy .rating-star .rating-box:before, .company-holder.fancy .fancy-button-prev:hover i, .company-holder.fancy .fancy-button-next:hover i, .company-rating .list-option .shortlist-btn i, .wp-foodworld .listing.grid-slider:hover .restaurant-status, #footer.footer-style-4 .widget-connect ul li span i,
+.wp-foodworld .listing.grid-slider .rating-star .rating-box:before, .location-holder.modern a.more-btn, .grid-slider .swiper-button-prev:hover i, .grid-slider .swiper-button-next:hover i,
 .company-holder.simple .company-logo .text-holder .post-title h6 a:hover
 {
 color:#c33332 !important;
 }
 .bgcolor, .chosen-container .chosen-results li.highlighted, .order-sort-results ul li:hover:before, .bootstrap-datetimepicker-widget .btn-primary, 
 .booking-info-sec .contact-info .field-holder .submit-btn input[type="submit"], .user-order input[type="submit"], .main-post .column-text form .field-holder .field-btn, 
-.main-search.fancy.bg-holder, .load-more-btn:hover, .order-sort-results ul li.active:before, .order-sort-results ul li.active:before, .listing.simple.slide-loader:before, .main-header .login-option a.get-start-btn, .field-holder .btn-submit:hover, .no-results .suggestions ul li:before, .widget.widget_search form .btn-default, .textwidget span.button-med a, .cs-seprater:after, .slicknav_btn, .user-order .select-option input[type="radio"]:checked + label:after, #add_payment_method #payment ul.payment_methods li.wc_payment_method input[type="radio"]:checked + label:after, .woocommerce-checkout #payment ul.payment_methods li.wc_payment_method input[type="radio"]:checked + label:after, .woocommerce form .woocommerce-checkout-payment .form-row input.button, .pricetable-holder .cs-price, .foodbakery-button-loader, .invite-member .btn-send, .menu-order-detail .btn-print, .radio-holder .input-radio label:after, .footer-style-1 .social-media li a:hover, #footer.footer-style-1 .widget-title h5:after, .pricetable-holder .foodbakery-subscribe-pkg-btn, .pricetable-holder .foodbakery-subscribe-pkg, .login-form .input-filed input[type="submit"], .login-form .input-filed input[type="button"], .user-dashboard .foodbakery_loader, .user-order input[type="submit"], .user-order .menu-order-confirm, .modal-dialog .menu-selection-container button, .modal-dialog .menu-selection-container .reset-menu-fields, .suggestion-search .btn-default, .main-search.classic .field-holder input[type="submit"],
-.wp-foodbakery .listing.grid-slider .list-post:hover:before, #footer.footer-style-4 .social-media > li > a:hover, #header.transparent-header.court.pinned .main-header,
+.main-search.fancy.bg-holder, .load-more-btn:hover, .order-sort-results ul li.active:before, .order-sort-results ul li.active:before, .listing.simple.slide-loader:before, .main-header .login-option a.get-start-btn, .field-holder .btn-submit:hover, .no-results .suggestions ul li:before, .widget.widget_search form .btn-default, .textwidget span.button-med a, .cs-seprater:after, .slicknav_btn, .user-order .select-option input[type="radio"]:checked + label:after, #add_payment_method #payment ul.payment_methods li.wc_payment_method input[type="radio"]:checked + label:after, .woocommerce-checkout #payment ul.payment_methods li.wc_payment_method input[type="radio"]:checked + label:after, .woocommerce form .woocommerce-checkout-payment .form-row input.button, .pricetable-holder .cs-price, .foodworld-button-loader, .invite-member .btn-send, .menu-order-detail .btn-print, .radio-holder .input-radio label:after, .footer-style-1 .social-media li a:hover, #footer.footer-style-1 .widget-title h5:after, .pricetable-holder .foodworld-subscribe-pkg-btn, .pricetable-holder .foodworld-subscribe-pkg, .login-form .input-filed input[type="submit"], .login-form .input-filed input[type="button"], .user-dashboard .foodworld_loader, .user-order input[type="submit"], .user-order .menu-order-confirm, .modal-dialog .menu-selection-container button, .modal-dialog .menu-selection-container .reset-menu-fields, .suggestion-search .btn-default, .main-search.classic .field-holder input[type="submit"],
+.wp-foodworld .listing.grid-slider .list-post:hover:before, #footer.footer-style-4 .social-media > li > a:hover, #header.transparent-header.court.pinned .main-header,
 .main-location > ul > li.choose-location ul ul::-webkit-scrollbar-thumb, .icon-boxes.fancy:hover .img-holder figure i
 {
 background-color:#c33332 !important;
@@ -2420,17 +2420,17 @@ color:#cdcdcd !important;
 .categories-holder.modern {width:100%;}
 .location-holder.modern ul.location-list {margin-bottom:20px;}
 .location-holder.modern ul.location-list:after {opacity:0; visibility:hidden;}
-.wp-foodbakery .listing.grid-slider .list-post figure img {width:100%;}
+.wp-foodworld .listing.grid-slider .list-post figure img {width:100%;}
 .testimonial.simple {padding:0;}
 /*Categories Modern Style End*/
 /*Food Court Newsletter Style Start*/
 .mailchimp-newsletter form .field-holder {width: 68%;}
 .mailchimp-newsletter form .btn-submit {min-width: 130px;}
 /*Food Court Newsletter Style End*/
-.wp-foodbakery .listing-main-search {background: #fff; padding: 20px 20px 0; width:100%;}
-.wp-foodbakery .main-search .field-holder input[type="text"] {border: 1px solid #dfe1e4;}
+.wp-foodworld .listing-main-search {background: #fff; padding: 20px 20px 0; width:100%;}
+.wp-foodworld .main-search .field-holder input[type="text"] {border: 1px solid #dfe1e4;}
 .page-section.cs-nomargin {margin: 0;}
-.home.wp-foodbakery .listing-main-search {background:none; padding:0;}
+.home.wp-foodworld .listing-main-search {background:none; padding:0;}
 
 }
 
@@ -2592,9 +2592,9 @@ color:#cdcdcd !important;
 .nav-tabs li.active:first-child a:focus { border-radius: 0; }
 .user-dashboard .user-holder:after { content: ''; display: table; line-height: 0; clear: both; }
 .user-profile .team-list .panel-body [class*="col-"] { display: block; }
-.wp-foodbakery .signup-form { width: 100%; }
+.wp-foodworld .signup-form { width: 100%; }
 .signup-form div#recaptcha1 { transform: scale(1.15); -webkit-transform: scale(1.15); -moz-transform: scale(1.15); -ms-transform: scale(1.15); margin: 0 0 15px 25px; }
-.wp-foodbakery .signup-form .login-section { float: left; }
+.wp-foodworld .signup-form .login-section { float: left; }
 .table-generic > li > div { white-space: nowrap; padding: 10px 14px; }
 .table-generic > li:first-child > div { padding: 8px 10px; }
 .menu-order-detail .modal-dialog { width: 75%; min-width: 320px; }
@@ -2753,10 +2753,10 @@ h1 a { font-size: 25px !important; line-height: 30px !important; }
 .user-profile .team-list ul.panel-group { width: 550px; }
 .listing.simple .list-option { position: relative; top: 0; transform: translateY(0); right: auto; left: 109px; margin-top: 15px; }
 .user-dashboard .listing.simple .list-option { position: static; transform: none; display: block; margin-bottom: 10px; }
-.foodbakery-pkg-header .pkg-detail-btn.pull-right { float: none !important; }
-.foodbakery-pkg-header .pkg-title-price.pull-left { float: none !important; margin-bottom: 5px; }
-.foodbakery-pkg-header .pkg-title-price span.pkg-price { float: right; }
-.foodbakery-pkg-header .radio-holder { min-width: 160px; }
+.foodworld-pkg-header .pkg-detail-btn.pull-right { float: none !important; }
+.foodworld-pkg-header .pkg-title-price.pull-left { float: none !important; margin-bottom: 5px; }
+.foodworld-pkg-header .pkg-title-price span.pkg-price { float: right; }
+.foodworld-pkg-header .radio-holder { min-width: 160px; }
 .payment-list li { width: 50%; }
 .categories-holder .col-xs-6 { width: 50%; }
 .location-holder .col-xs-12 { width: 100%; }
@@ -2798,8 +2798,8 @@ ul.sub-nav { text-align: left; }
 .nav-tabs li.active:first-child a:focus { border-radius: 0; }
 .overall-rating .reviews-box li { display: block; width: 100%; }
 .overall-rating .reviews-box li:not(:last-child) { margin-bottom: 15px; }
-.foodbakery-pkg-header .pkg-title-price { float: none !important; width: 100%; margin-bottom: 10px; }
-.foodbakery-pkg-header .pkg-detail-btn { float: none !important; width: 100%; }
+.foodworld-pkg-header .pkg-title-price { float: none !important; width: 100%; margin-bottom: 10px; }
+.foodworld-pkg-header .pkg-detail-btn { float: none !important; width: 100%; }
 .upload-gallery .upload-btn { position: static; }
 .service-list li { position: relative; }
 .service-list .list-title { width: 80%; padding-right: 50px; }
@@ -2842,7 +2842,7 @@ ul.sub-nav { text-align: left; }
 .main-location > ul > li ul { width: 215px; }
 .image-holder + .text-holder + .price-holder { margin-top: 0; top: 79px; }
 .main-location > ul > li ul { left: -25px; }
-.main-search.classic .field-holder span.foodbakery-radius-location {right: 20px;}
+.main-search.classic .field-holder span.foodworld-radius-location {right: 20px;}
 .main-search.classic .field-holder input[type="text"] {padding-right:50px;}
 .main-search.classic .field-holder input[type="submit"] {left: 50%; bottom: -70px; top:auto; -webkit-transform: translateX(-50%); -ms-transform: translateX(-50%); transform: translateX(-50%); z-index:1;}
 .main-search.classic .select-location .select-popup {width:100%;}
@@ -2889,7 +2889,7 @@ ul.sub-nav { text-align: left; }
 .pagination > li { margin: 0px 3px 5px 0; }
 .menu-itam-holder .menu-itam-list .text-holder h6 { font-size: 12px !important; }
 .rating-summary li { width: 100%; margin-bottom: 10px; }
-.foodbakery-pkg-header .pkg-title-price label.pkg-title { display: block; }
+.foodworld-pkg-header .pkg-title-price label.pkg-title { display: block; }
 .service-list .list-title { padding-left: 0; padding-right: 25px; }
 .service-list .icon-holder { width: 20%; }
 .service-list .list-option .icon-cross-out { font-size: 12px; }
@@ -2920,8 +2920,8 @@ ul.sub-nav { text-align: left; }
 .service-list .list-option a.remove-menu-item { margin-left: 0; }
 .service-list .list-option a.edit-menu-item i { font-size: 15px; }
 .user-dashboard .order-list .author-info .text-holder span.price { position: static; display: block; }
-.foodbakery-pkg-header .pkg-title-price span.pkg-price { margin-top: 5px; }
-.foodbakery-pkg-header .radio-holder { display: block; width: 100%; }
+.foodworld-pkg-header .pkg-title-price span.pkg-price { margin-top: 5px; }
+.foodworld-pkg-header .radio-holder { display: block; width: 100%; }
 .restaurant-menu-nav.nav-tabs > li a:hover,
 .restaurant-menu-nav.nav-tabs > li a:focus,
 .restaurant-menu-nav.nav-tabs > li.active a,
@@ -3376,66 +3376,66 @@ ul.user-controls li:first-child i { color: #0f0851; }
 .single-product div.pp_woocommerce .pp_gallery ul li a {height: auto;}
 .single-product .pp_gallery ul {height: auto;}
 /* Shop Custom Style Start */
-.wp-foodbakery.woocommerce-page {background: #fff !important;}
-.wp-foodbakery.woocommerce-page .main-section:after {content: ""; display: block; clear: both;}
-.wp-foodbakery.woocommerce ul.products {margin: 0 -10px 0;}
-.wp-foodbakery.woocommerce ul.products li.product {border: 1px solid #e6e1e1; margin: 0 10px 30px 10px;	padding:0 0 20px 0; width: 31.333%;}
-.wp-foodbakery.woocommerce .page-content ul.products li.product {width: 30.666%;}
-.wp-foodbakery.woocommerce ul.products li.product a img {border-bottom: 1px solid #e6e1e1; box-shadow: none; margin: 0 0 12px;}
-.wp-foodbakery.woocommerce ul.products li .featured-product {background: red; border-radius: 100%; color: #fff; position: absolute; left: 30px; top: 15px; text-align: center; line-height: 22px; z-index: 1; height: 20px; width: 20px;}
+.wp-foodworld.woocommerce-page {background: #fff !important;}
+.wp-foodworld.woocommerce-page .main-section:after {content: ""; display: block; clear: both;}
+.wp-foodworld.woocommerce ul.products {margin: 0 -10px 0;}
+.wp-foodworld.woocommerce ul.products li.product {border: 1px solid #e6e1e1; margin: 0 10px 30px 10px;	padding:0 0 20px 0; width: 31.333%;}
+.wp-foodworld.woocommerce .page-content ul.products li.product {width: 30.666%;}
+.wp-foodworld.woocommerce ul.products li.product a img {border-bottom: 1px solid #e6e1e1; box-shadow: none; margin: 0 0 12px;}
+.wp-foodworld.woocommerce ul.products li .featured-product {background: red; border-radius: 100%; color: #fff; position: absolute; left: 30px; top: 15px; text-align: center; line-height: 22px; z-index: 1; height: 20px; width: 20px;}
 .woocommerce ul.products li.product h2 {margin-bottom: 5px;	padding: 0 10px 0 20px;	font-weight: 600 !important;}
-.wp-foodbakery.woocommerce ul.products li.product .price del {color: #999; font-size: 13px; font-weight: 400; display: inline-block; margin: 0 0 0 10px; vertical-align: middle; text-decoration: line-through;}
-.wp-foodbakery.woocommerce ul.products li.product .price {display:block; padding: 0 10px 0 20px;}
-.wp-foodbakery.woocommerce ul.products li.product .price del span {font-weight: 400 !important;	font-size: 14px !important;}
-.wp-foodbakery.woocommerce ul.products li.product .price ins span,
-.wp-foodbakery.woocommerce ul.products li.product .price span {font-size: 16px !important; vertical-align: middle;}
-.wp-foodbakery.woocommerce ul.products li.product a.button {border-radius: 2px; font-size: 100%; cursor: pointer; position: relative; font-family: inherit; text-decoration: none; font-weight: 600; color: #fff; display: inline-block; vertical-align:middle; text-transform: capitalize; padding: 5px 12px; margin-left: 20px;}
-.wp-foodbakery.woocommerce ul.products li.product a.added_to_cart {background: #c33332;	border-radius: 2px; border: 0; color: #fff; font-size: 12px; font-weight: 600; padding: 8px 15px; float: none; display: inline-block; vertical-align: middle;}
-.wp-foodbakery.woocommerce ul.products li.product a.added_to_cart {border: 0; border-radius: 2px; font-size: 12px; color: #fff; float: none; display: inline-block; vertical-align: middle;	padding: 8px 12px; text-transform: capitalize;}
-.wp-foodbakery.single-product div.product .woocommerce-product-gallery {float: left; margin-bottom: 10px; margin-right: 30px; position:relative; width: 50%;}
-.wp-foodbakery.single-product div.product .entry-summary {overflow: hidden;}
-.wp-foodbakery.woocommerce.single-product div.product .quantity input[type="button"] {border:0;}
-.wp-foodbakery .woocommerce-product-gallery__trigger {display:none;}
-.wp-foodbakery.woocommerce.single-product div.product form.cart div.quantity {width: auto; display: inline-block; vertical-align: middle;}
-.wp-foodbakery.woocommerce.single-product div.product form.cart div.quantity label { margin: 0 10px 0 0; }
-.wp-foodbakery.woocommerce.single-product div.product form.cart .button {border: 0; border-radius: 0; font-size: 12px; font-weight: 600; height: 35px; margin-top: 0; display: inline-block;vertical-align: middle;}
-.wp-foodbakery.woocommerce.single-product div.product .stock {border-radius:0;}
-.wp-foodbakery.woocommerce div.product p.price del, 
-.wp-foodbakery.woocommerce div.product span.price del {color: #77a464; text-decoration: line-through;}
-.wp-foodbakery.woocommerce .woocommerce-tabs .nav-tabs.wc-tabs {text-align:left;}
-.wp-foodbakery.woocommerce .woocommerce-tabs .nav-tabs.wc-tabs li a {box-shadow:none; margin-right: 20px; padding: 0 0 15px 0;}
-.wp-foodbakery.woocommerce table.shop_attributes th {width: 150px; font-weight: 700; padding: 10px; vertical-align: middle;}
-.wp-foodbakery.woocommerce table.shop_attributes td, 
-.wp-foodbakery.woocommerce table.shop_attributes th {border: 1px solid #d2d2d2; line-height: 1.5; margin: 0; padding: 12px 16px; text-align: left;}
-.wp-foodbakery.woocommerce #respond input[type="submit"] {left: auto; right: auto; bottom: auto; height: auto; padding: 8px 25px; font-weight: 600; width: auto;}
-.wp-foodbakery.woocommerce .field-holder label {margin-bottom:0;}
-.wp-foodbakery.wp-foodbakery.woocommerce .woocommerce-Reviews p input[type="text"],
-.wp-foodbakery.wp-foodbakery.woocommerce .woocommerce-Reviews p input[type="email"] {border-color:#eceef4; height: 40px !important;}
-.wp-foodbakery.single-product div.product .woocommerce-product-gallery .flex-control-thumbs {padding: 0; margin: 0;}
-.wp-foodbakery.single-product div.product .woocommerce-product-gallery .flex-control-thumbs li {display: inline-block; list-style: none; margin: 5px 5px 5px 0; cursor: pointer; width: auto;}
-.wp-foodbakery.woocommerce .woocommerce-message a.button {border-radius: 0; padding: 5px 12px; margin-top: -5px; font-weight: 600;}
-.wp-foodbakery .woocommerce .product-quantity .quantity .qtyminus, 
-.wp-foodbakery .woocommerce .product-quantity .quantity .qtyplus {border:0;}
-.wp-foodbakery .woocommerce .coupon input[type="text"] {border-color: #d2d2d2;}
-.wp-foodbakery .woocommerce .cart_totals .wc-proceed-to-checkout a.button.alt:hover {color:#333;}
-.wp-foodbakery .woocommerce form .form-row label.checkbox {padding-left: 20px;}
-.wp-foodbakery .woocommerce form .form-row .input-checkbox[type="checkbox"] {margin: 2px 0 0 0;}
-.wp-foodbakery .woocommerce form .form-row.create-account label {line-height: 16px;}
-.wp-foodbakery .woocommerce .select2-container--default .select2-selection--single {border-color: #eceef4; border-radius: 0; height: 42px; line-height: 42px;}
-.wp-foodbakery .woocommerce .select2-container--default .select2-selection--single .select2-selection__rendered {font-size: 13px; line-height: 40px; padding-right: 19px; padding-left: 19px;}
-.wp-foodbakery .woocommerce .select2-container--default .select2-selection--single .select2-selection__arrow {top: 50%; right: 10px; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%);}
-.wp-foodbakery.woocommerce-page .select2-dropdown {border-color: #eceef4;}
-.wp-foodbakery.woocommerce-page .select2-container--default .select2-search--dropdown .select2-search__field {height: 30px; border-color: #eceef4;}
-.wp-foodbakery.woocommerce-page .select2-results__options li {list-style:none;}
-.wp-foodbakery .woocommerce form .form-row label input[type="checkbox"] {margin: 0 5px 0 5px;}
-.wp-foodbakery.woocommerce .related.products ul.products li.product a.added_to_cart {position: initial;}
-.wp-foodbakery .woocommerce table.cart button.button { float: right; padding: 7px 12px; text-transform: capitalize; font-weight: 500; margin-left: 10px; }
-.wp-foodbakery.single-product div.product .woocommerce-product-gallery .wp-post-image { margin-bottom: 10px; width: 100%; }
-.wp-foodbakery.single-product div.product table.variations td.label { font-size: 13px; color: #333; display: table-cell; vertical-align: middle; padding-right: 10px; width: auto; }
-.wp-foodbakery.single-product div.product table.variations td.label label { margin-bottom: 0; }
-.wp-foodbakery.woocommerce ul.products li.product .button.loading { background-color: rgba(195, 51, 50, 0.5); }
-.wp-foodbakery.woocommerce ul.products li.product a.button.added:after { content: "\e5ca"; font-family: 'icomoon'; font-size: 12px; margin-left: 3px; }
-.wp-foodbakery.woocommerce ul.products .button.loading:after { font-family: 'icomoon'; content: "\eb36"; color:#000; -webkit-font-smoothing: antialiased; font-weight: 400; position: absolute;	top: 50%; right: 10px; margin-top:-12px; -webkit-animation: spin 2s linear infinite; -moz-animation: spin 2s linear infinite; animation: spin 2s linear infinite }
+.wp-foodworld.woocommerce ul.products li.product .price del {color: #999; font-size: 13px; font-weight: 400; display: inline-block; margin: 0 0 0 10px; vertical-align: middle; text-decoration: line-through;}
+.wp-foodworld.woocommerce ul.products li.product .price {display:block; padding: 0 10px 0 20px;}
+.wp-foodworld.woocommerce ul.products li.product .price del span {font-weight: 400 !important;	font-size: 14px !important;}
+.wp-foodworld.woocommerce ul.products li.product .price ins span,
+.wp-foodworld.woocommerce ul.products li.product .price span {font-size: 16px !important; vertical-align: middle;}
+.wp-foodworld.woocommerce ul.products li.product a.button {border-radius: 2px; font-size: 100%; cursor: pointer; position: relative; font-family: inherit; text-decoration: none; font-weight: 600; color: #fff; display: inline-block; vertical-align:middle; text-transform: capitalize; padding: 5px 12px; margin-left: 20px;}
+.wp-foodworld.woocommerce ul.products li.product a.added_to_cart {background: #c33332;	border-radius: 2px; border: 0; color: #fff; font-size: 12px; font-weight: 600; padding: 8px 15px; float: none; display: inline-block; vertical-align: middle;}
+.wp-foodworld.woocommerce ul.products li.product a.added_to_cart {border: 0; border-radius: 2px; font-size: 12px; color: #fff; float: none; display: inline-block; vertical-align: middle;	padding: 8px 12px; text-transform: capitalize;}
+.wp-foodworld.single-product div.product .woocommerce-product-gallery {float: left; margin-bottom: 10px; margin-right: 30px; position:relative; width: 50%;}
+.wp-foodworld.single-product div.product .entry-summary {overflow: hidden;}
+.wp-foodworld.woocommerce.single-product div.product .quantity input[type="button"] {border:0;}
+.wp-foodworld .woocommerce-product-gallery__trigger {display:none;}
+.wp-foodworld.woocommerce.single-product div.product form.cart div.quantity {width: auto; display: inline-block; vertical-align: middle;}
+.wp-foodworld.woocommerce.single-product div.product form.cart div.quantity label { margin: 0 10px 0 0; }
+.wp-foodworld.woocommerce.single-product div.product form.cart .button {border: 0; border-radius: 0; font-size: 12px; font-weight: 600; height: 35px; margin-top: 0; display: inline-block;vertical-align: middle;}
+.wp-foodworld.woocommerce.single-product div.product .stock {border-radius:0;}
+.wp-foodworld.woocommerce div.product p.price del, 
+.wp-foodworld.woocommerce div.product span.price del {color: #77a464; text-decoration: line-through;}
+.wp-foodworld.woocommerce .woocommerce-tabs .nav-tabs.wc-tabs {text-align:left;}
+.wp-foodworld.woocommerce .woocommerce-tabs .nav-tabs.wc-tabs li a {box-shadow:none; margin-right: 20px; padding: 0 0 15px 0;}
+.wp-foodworld.woocommerce table.shop_attributes th {width: 150px; font-weight: 700; padding: 10px; vertical-align: middle;}
+.wp-foodworld.woocommerce table.shop_attributes td, 
+.wp-foodworld.woocommerce table.shop_attributes th {border: 1px solid #d2d2d2; line-height: 1.5; margin: 0; padding: 12px 16px; text-align: left;}
+.wp-foodworld.woocommerce #respond input[type="submit"] {left: auto; right: auto; bottom: auto; height: auto; padding: 8px 25px; font-weight: 600; width: auto;}
+.wp-foodworld.woocommerce .field-holder label {margin-bottom:0;}
+.wp-foodworld.wp-foodworld.woocommerce .woocommerce-Reviews p input[type="text"],
+.wp-foodworld.wp-foodworld.woocommerce .woocommerce-Reviews p input[type="email"] {border-color:#eceef4; height: 40px !important;}
+.wp-foodworld.single-product div.product .woocommerce-product-gallery .flex-control-thumbs {padding: 0; margin: 0;}
+.wp-foodworld.single-product div.product .woocommerce-product-gallery .flex-control-thumbs li {display: inline-block; list-style: none; margin: 5px 5px 5px 0; cursor: pointer; width: auto;}
+.wp-foodworld.woocommerce .woocommerce-message a.button {border-radius: 0; padding: 5px 12px; margin-top: -5px; font-weight: 600;}
+.wp-foodworld .woocommerce .product-quantity .quantity .qtyminus, 
+.wp-foodworld .woocommerce .product-quantity .quantity .qtyplus {border:0;}
+.wp-foodworld .woocommerce .coupon input[type="text"] {border-color: #d2d2d2;}
+.wp-foodworld .woocommerce .cart_totals .wc-proceed-to-checkout a.button.alt:hover {color:#333;}
+.wp-foodworld .woocommerce form .form-row label.checkbox {padding-left: 20px;}
+.wp-foodworld .woocommerce form .form-row .input-checkbox[type="checkbox"] {margin: 2px 0 0 0;}
+.wp-foodworld .woocommerce form .form-row.create-account label {line-height: 16px;}
+.wp-foodworld .woocommerce .select2-container--default .select2-selection--single {border-color: #eceef4; border-radius: 0; height: 42px; line-height: 42px;}
+.wp-foodworld .woocommerce .select2-container--default .select2-selection--single .select2-selection__rendered {font-size: 13px; line-height: 40px; padding-right: 19px; padding-left: 19px;}
+.wp-foodworld .woocommerce .select2-container--default .select2-selection--single .select2-selection__arrow {top: 50%; right: 10px; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%);}
+.wp-foodworld.woocommerce-page .select2-dropdown {border-color: #eceef4;}
+.wp-foodworld.woocommerce-page .select2-container--default .select2-search--dropdown .select2-search__field {height: 30px; border-color: #eceef4;}
+.wp-foodworld.woocommerce-page .select2-results__options li {list-style:none;}
+.wp-foodworld .woocommerce form .form-row label input[type="checkbox"] {margin: 0 5px 0 5px;}
+.wp-foodworld.woocommerce .related.products ul.products li.product a.added_to_cart {position: initial;}
+.wp-foodworld .woocommerce table.cart button.button { float: right; padding: 7px 12px; text-transform: capitalize; font-weight: 500; margin-left: 10px; }
+.wp-foodworld.single-product div.product .woocommerce-product-gallery .wp-post-image { margin-bottom: 10px; width: 100%; }
+.wp-foodworld.single-product div.product table.variations td.label { font-size: 13px; color: #333; display: table-cell; vertical-align: middle; padding-right: 10px; width: auto; }
+.wp-foodworld.single-product div.product table.variations td.label label { margin-bottom: 0; }
+.wp-foodworld.woocommerce ul.products li.product .button.loading { background-color: rgba(195, 51, 50, 0.5); }
+.wp-foodworld.woocommerce ul.products li.product a.button.added:after { content: "\e5ca"; font-family: 'icomoon'; font-size: 12px; margin-left: 3px; }
+.wp-foodworld.woocommerce ul.products .button.loading:after { font-family: 'icomoon'; content: "\eb36"; color:#000; -webkit-font-smoothing: antialiased; font-weight: 400; position: absolute;	top: 50%; right: 10px; margin-top:-12px; -webkit-animation: spin 2s linear infinite; -moz-animation: spin 2s linear infinite; animation: spin 2s linear infinite }
 @-webkit-keyframes spin {
 	100% { -webkit-transform:rotate(360deg) }
 }
@@ -3457,12 +3457,12 @@ ul.user-controls li:first-child i { color: #0f0851; }
 }
 
 @media screen and (max-width: 1024px) {
-.wp-foodbakery.woocommerce ul.products li.product,
-.wp-foodbakery.woocommerce.single.single-product ul.products li.product { width: 30.777%; }
+.wp-foodworld.woocommerce ul.products li.product,
+.wp-foodworld.woocommerce.single.single-product ul.products li.product { width: 30.777%; }
 }
 
 @media screen and (max-width: 980px) {
-.wp-foodbakery.woocommerce ul.products li.product { width:46.888%; }
+.wp-foodworld.woocommerce ul.products li.product { width:46.888%; }
 .woocommerce .site-main .has-post-thumbnail { padding: 0; }
 .woocommerce .cart-collaterals { float: left; }
 .woocommerce form .form-row.form-row-first, .woocommerce form .form-row.form-row-last { width: 47.666%; }
@@ -3479,17 +3479,17 @@ ul.user-controls li:first-child i { color: #0f0851; }
 .widget_product_search form input[type="search"] { width: 89%; }
 .woocommerce > form { overflow-x: scroll; margin-bottom: 30px; }
 .woocommerce form table.shop_table.cart { width: 1140px; }
-.wp-foodbakery.woocommerce ul.products li.product,
-.wp-foodbakery.woocommerce.single.single-product ul.products li.product { width:46.222%; }
-.wp-foodbakery.single-product div.product .woocommerce-product-gallery {width: 100%;}
+.wp-foodworld.woocommerce ul.products li.product,
+.wp-foodworld.woocommerce.single.single-product ul.products li.product { width:46.222%; }
+.wp-foodworld.single-product div.product .woocommerce-product-gallery {width: 100%;}
 }
 
 @media screen and (max-width: 640px) {
 .woocommerce ul.products li.product { width: 50%; }
 .widget_product_search form input[type="search"] { width: 86%; }
-.wp-foodbakery.single.single-product.woocommerce ul.products li.product { width: 100%; }
-.wp-foodbakery.woocommerce ul.products {margin: 0;}
-.wp-foodbakery.woocommerce ul.products li.product {width: 100%; margin: 0 0 30px 0;}
+.wp-foodworld.single.single-product.woocommerce ul.products li.product { width: 100%; }
+.wp-foodworld.woocommerce ul.products {margin: 0;}
+.wp-foodworld.woocommerce ul.products li.product {width: 100%; margin: 0 0 30px 0;}
 }
 
 @media screen and (max-width: 480px) {
