@@ -6,7 +6,7 @@
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
           <div class="logo mt-3">
             <figure>
-              <a href="index.html" class="light-logo">
+              <a href="{% url 'home' %}" class="light-logo">
                 <img src="{% static 'logo/foodWorldLogo.jpg' %}" alt="FoodWorld" width="200px">
               </a>
             </figure>
@@ -56,26 +56,38 @@
           <div class="main-location">
             <ul>
               <li class="location-has-children choose-location">
-                <form action="#">
-                  <input type="text" value="" name="location" placeholder="Enter your delivery location" autocomplete="off">
-                  <span id="foodworld_radius_location_open" class="foodworld-radius-location"><i class="icon-target5"></i></span>
+                <form action="#" style="position: relative;">
+                  <input type="text" value="" name="location" placeholder="Enter your delivery location" autocomplete="off" style="padding-right: 30px;">
+                  <span id="foodworld_radius_location_open" class="foodworld-radius-location"
+                    style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px;">
+                    <i class="icon-target5"></i>
+                  </span>
                 </form>
               </li>
             </ul>
-            </div>
+          </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <div class="login-option">
-            <a href="#user-register" class="cs-color cs-popup-joinus-btn login-popup" data-target="#sign-in" data-toggle="modal">
-              Login
-            </a>
-            /
-            <span>
-              <a href="{% url 'registerUser' %}" class="cs-color cs-popup-joinus-btn login-popup ml-0">
-                Register
+            {% if user.is_authenticated %}
+              <a href="{% url 'myAccount' %}" class="cs-color cs-popup-joinus-btn login-popup">
+                My account
               </a>
-            </span>
-            <a href="{% url 'registerVendor' %}" class="get-start-btn">Register Restaurant</a>
+              <a href="{% url 'logout' %}" class="cs-color cs-popup-joinus-btn login-popup text-danger">
+                Logout
+              </a>
+            {% else %}
+              <a href="{% url 'login' %}" class="cs-color cs-popup-joinus-btn login-popup">
+                Login
+              </a>
+              /
+              <span>
+                <a href="{% url 'registerUser' %}" class="cs-color cs-popup-joinus-btn login-popup ml-0">
+                  Register
+                </a>
+              </span>
+              <a href="{% url 'registerVendor' %}" class="get-start-btn">Register Restaurant</a>
+            {% endif %}
           </div>
         </div>
       </div>
