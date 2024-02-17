@@ -10,4 +10,5 @@
   right: 20px;
   animation-name: show-notification;
   animation-duration: 8s;
+  z-index: 99;
 }

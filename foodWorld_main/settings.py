@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'accounts.context_processors.get_vendor'
             ],
         },
     },
@@ -73,7 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'foodWorld_main.wsgi.application'
 
-CSRF_TRUSTED_ORIGINS=['http://127.0.0.1:8000/']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000/', 'http://127.0.0.1:8000/']
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -152,5 +153,6 @@ EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+# EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')

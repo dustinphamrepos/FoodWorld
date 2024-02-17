@@ -4,8 +4,10 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import redirect, render
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.tokens import default_token_generator
+
 from .utils import detectUser, send_verification_email
 
+from vendor.models import Vendor
 from vendor.forms import VendorForm
 from .models import User, UserProfile
 from .forms import UserForm
@@ -134,8 +136,8 @@ def login(request):
     messages.warning(request, 'You are already logged in')
     return redirect('myAccount')
   elif request.method == 'POST':
-    email = request.POST['email']
-    password = request.POST['password']
+    email = request.POST.get('email')
+    password = request.POST.get('password')
 
     user = auth.authenticate(email=email, password=password)
     if user is not None:
