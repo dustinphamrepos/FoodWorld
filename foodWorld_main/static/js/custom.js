@@ -54,9 +54,14 @@ function onPlaceChanged() {
       if (place.address_components[i].types[j] == 'administrative_area_level_1') {
         $("#id_city").val(place.address_components[i].long_name)
       }
+      // get district
+      if (place.address_components[i].types[j] == 'administrative_area_level_2') {
+        $("#id_district").val(place.address_components[i].long_name);
+      }
+      console.log(place.address_components);
       // get PIN code
       if (place.address_components[i].types[j] == 'postal_code') {
-        $("#id_pin_code").val(place.address_components[i].long_name)
+        $("#id_pin_code").val(place.address_components[i].long_name);
       }
       else {
         $("#id_pin_code").val("")
