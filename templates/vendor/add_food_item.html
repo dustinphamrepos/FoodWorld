@@ -24,22 +24,46 @@
                 </button>
               </div>
               <br />
-              <h6>Modify Category</h6>
+              <h6>Add New Food Item</h6>
               <!-- render form -->
-              <form action="{% url 'edit_category' category.id %}" method="post">
+              <form action="{% url 'add_food_item' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-fields-set">
                   <div class="row">
                     <div class="col-lg-12 col-md-12">
                       <div class="field-holder">
-                        <label>Category Name *</label>
-                          {{ form.category_name }}
+                        <label>Food Title *</label>
+                          {{ form.food_title }}
+                      </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                      <div class="field-holder">
+                        <label>Category *</label>
+                          {{ form.category }}
                       </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
                       <div class="field-holder">
                         <label>Description *</label>
                           {{ form.description }}
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                      <div class="field-holder">
+                        <label>Price *</label>
+                          {{ form.price }}
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                      <div class="field-holder">
+                        <label>Image *</label>
+                          {{ form.image }}
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                      <div class="field-holder">
+                        <label>Is available *</label>
+                          {{ form.is_available }}
                       </div>
                     </div>
                   </div>
@@ -52,17 +76,9 @@
                     {% endfor %}
                   {% endif %}
                 {% endfor %}
-                <div class="float-right">
-                  <button type="submit" class="btn btn-info">
-                    <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Update
-                  </button>&nbsp;&nbsp;&nbsp;
-                  <a class="btn btn-danger" href="{% url 'delete_category' category.id %}"
-                    onclick="return confirm('Are you sure want to delete this category?')"
-                    style="text-decoration:none; width:102px !important; height:24px !important;
-                    font-size:12px !important; padding: 2px 21px !important">
-                    <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;&nbsp;Delete
-                  </a>
-                </div>
+                <button type="submit" class="btn btn-info float-right">
+                  <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Create
+                </button>
                 <br />
               </form>
             </div>

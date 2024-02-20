@@ -25,39 +25,48 @@
               </div>
               <br />
               <h6>Menu Categories</h6>
-              <a href="#" class="btn btn-success float-right m-1"
-                style="width:129.78px !important; height:24px !important;
-                font-size:12px !important; padding: 2px 21px !important">
-                <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add Food
-              </a>
-              <a href="{% url 'add_category' %}" class="btn btn-info float-right m-1">
-                <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add Category
-              </a>
-              <br />
-              <br />
-              <table class="table-warning table-hover table-borderless">
-                <tbody>
-                  {% for category in categories %}
-                  <tr>
-                    <td class="align-middle text-center">{{ forloop.counter }}</td>
-                    <td class="align-middle text-left">
-                      <a href="{% url 'food_items_by_category' category.id %}">
-                        <p class="mb-0 font-weight-bold">{{ category.category_name }}</p>
-                        <small class="text-muted">{{ category.description }}</small>
-                      </a>
-                    </td>
-                    <td class="align-middle">
-                      <a href="{% url 'edit_category' category.id %}" style="color:unset; text-decoration:none;">
-                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                      </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <a href="{% url 'delete_category' category.id %}" onclick="return confirm('Are you sure want to delete this category?')" style="text-decoration:none;">
-                        <i class="fa fa-trash text-danger" aria-hidden="true"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
+              {% if categories %}
+                <a href="{% url 'add_food_item' %}" class="btn btn-success float-right m-1"
+                  style="width:129.78px !important; height:24px !important;
+                  font-size:12px !important; padding: 2px 21px !important">
+                  <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add Food
+                </a>
+                <a href="{% url 'add_category' %}" class="btn btn-info float-right m-1">
+                  <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add Category
+                </a>
+                <br />
+                <br />
+                <table class="table-warning table-hover table-borderless">
+                  <tbody>
+                    {% for category in categories %}
+                    <tr>
+                      <td class="align-middle text-center">{{ forloop.counter }}</td>
+                      <td class="align-middle text-left">
+                        <a href="{% url 'food_items_by_category' category.id %}">
+                          <p class="mb-0 font-weight-bold">{{ category.category_name }}</p>
+                          <small class="text-muted">{{ category.description }}</small>
+                        </a>
+                      </td>
+                      <td class="align-middle text-right">
+                        <a href="{% url 'edit_category' category.id %}" style="color:unset; text-decoration:none;">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{% url 'delete_category' category.id %}" onclick="return confirm('Are you sure want to delete this category?')" style="text-decoration:none;">
+                          <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              {% else %}
+                <h5 class="text-center">No categories available.</h5>
+                <div class="text-center">
+                  <a href="{% url 'add_category' %}" class="btn btn-info float-right m-1">
+                    <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add Category
+                  </a>
+                </div>
+              {% endif %}
             </div>
           </div>
         </div>
