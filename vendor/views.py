@@ -16,12 +16,12 @@ def get_vendor(request):
   vendor = Vendor.objects.get(user=request.user)
   return vendor
 
-def get_category(request, pk=None):
-  category = get_object_or_404(Category, pk=pk)
+def get_category(request, category_id=None):
+  category = get_object_or_404(Category, id=category_id)
   return category
 
-def get_food_item(request, pk=None):
-  food_item = get_object_or_404(FoodItem, pk=pk)
+def get_food_item(request, food_item_id=None):
+  food_item = get_object_or_404(FoodItem, id=food_item_id)
   return food_item
 
 @login_required(login_url='login')
@@ -66,9 +66,9 @@ def menu_builder(request):
 
 @login_required(login_url='login')
 @user_passes_test(check_role_vendor)
-def food_items_by_category(request, pk=None):
+def food_items_by_category(request, category_id=None):
   vendor = get_vendor(request)
-  category = get_object_or_404(Category, pk=pk)
+  category = get_object_or_404(Category, id=category_id)
   food_items = FoodItem.objects.filter(vendor=vendor, category=category)
   print(food_items)
   context = {
@@ -101,8 +101,8 @@ def add_category(request):
 
 @login_required(login_url='login')
 @user_passes_test(check_role_vendor)
-def edit_category(request, pk=None):
-  category = get_category(request, pk)
+def edit_category(request, category_id=None):
+  category = get_category(request, category_id)
   if request.method == 'POST':
     form = CategoryForm(request.POST, instance=category)
     if form.is_valid():
@@ -125,8 +125,8 @@ def edit_category(request, pk=None):
 
 @login_required(login_url='login')
 @user_passes_test(check_role_vendor)
-def delete_category(request, pk=None):
-  category = get_category(request, pk)
+def delete_category(request, category_id=None):
+  category = get_category(request, category_id)
   category.delete()
   messages.success(request, 'Category has been deleted successfully.')
   return redirect('menu_builder')
@@ -157,8 +157,8 @@ def add_food_item(request):
 
 @login_required(login_url='login')
 @user_passes_test(check_role_vendor)
-def add_food_item_with_category(request, pk=None):
-  category = get_category(request, pk)
+def add_food_item_with_category(request, category_id=None):
+  category = get_category(request, category_id)
   if request.method == 'POST':
     form = FoodItemWithCategoryForm(request.POST, request.FILES)
     if form.is_valid():
@@ -169,13 +169,11 @@ def add_food_item_with_category(request, pk=None):
       food_item.slug = slugify(food_title)
       form.save()
       messages.success(request, 'Food Item added successfully.')
-      return redirect('food_items_by_category', pk)
+      return redirect('food_items_by_category', category_id)
     else:
       print(form.errors)
   else:
     form = FoodItemWithCategoryForm()
-    # Modify form
-    form.fields['category'].queryset = Category.objects.filter(vendor=get_vendor(request))
   context = {
     'form': form,
     'category': category
@@ -184,8 +182,8 @@ def add_food_item_with_category(request, pk=None):
 
 @login_required(login_url='login')
 @user_passes_test(check_role_vendor)
-def edit_food_item(request, pk=None):
-  food_item = get_food_item(request, pk)
+def edit_food_item(request, food_item_id=None):
+  food_item = get_food_item(request, food_item_id)
   if request.method == 'POST':
     form = FoodItemForm(request.POST, request.FILES, instance=food_item)
     if form.is_valid():
@@ -210,8 +208,8 @@ def edit_food_item(request, pk=None):
 
 @login_required(login_url='login')
 @user_passes_test(check_role_vendor)
-def delete_food_item(request, pk=None):
-  food_item = get_food_item(request, pk)
+def delete_food_item(request, food_item_id=None):
+  food_item = get_food_item(request, food_item_id)
   food_item.delete()
   messages.success(request, 'Food Item has been deleted successfully.')
   return redirect('food_items_by_category', food_item.category.id)

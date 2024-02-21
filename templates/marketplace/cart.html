@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="main-section pt-5">
+  <div class="page-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+          <div class="text-left">
+            <button class="btn btn-secondary" onclick="history.back()">
+              <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;Back
+            </button>
+          </div>
+          <br />
+          <div class="tabs-holder horizontal">
+            <ul class="stickynav-tabs nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-shopping-cart text-danger"></i>Cart Items</a></li>
+            </ul>
+            <div class="tab-content">
+              <div id="home" class="tab-pane in active">
+                <div class="menu-itam-holder">
+                  <div id="menu-item-list-6272" class="menu-itam-list">
+
+                    {% for category in categories %}
+                      {% if category.food_items_by_category.all %}
+                        <div class="element-title" id="menu-category-2">
+                          <h5 class="text-color">{{ category }}</h5>
+                          <span><small><em>{{ category.description }}<em></small></span>
+                        </div>
+                      {% endif %}
+                      <ul>
+                        {% for food_item in category.food_items_by_category.all %}
+                          <li>
+                            <div class="image-holder">
+                              <a href="">
+                                {% if food_item.image %}
+                                  <img src="{{ food_item.image.url }}" class="img-list wp-post-image" alt="Food Item" style="height:60px; width:65px;">
+                                {% else %}
+                                  <img src="{% static 'images/default-food-item.jpeg' %}" class="img-list wp-post-image" alt="Food Item">
+                                {% endif %}
+                              </a>
+                            </div>
+                            <div class="text-holder">
+                              <h6>{{ food_item }}</h6>
+                              <span><small>{{ food_item.description }}</small></span>
+                            </div>
+                            <div class="price-holder">
+                              <span class="price">${{ food_item.price }}</span>
+                              <a href="#" class="restaurant-add-menu-btn decrease-cart" data-id="{{ food_item.id }}" data-url="{% url 'decrease_cart' food_item.id %}" style="margin-right:24px;"><i class="icon-minus text-color"></i></a>
+                              {% if food_item.id in list_food_item_id %}
+                                {% for cart_item in cart_items %}
+                                  {% if cart_item.food_item.id == food_item.id %}
+                                    <label id="food-item-qty-{{ food_item.id }}">{{ cart_item.quantity }}</label>
+                                  {% endif %}
+                                {% endfor %}
+                              {% else %}
+                                <label id="food-item-qty-{{ food_item.id }}">0</label>
+                              {% endif %}
+                              <a href="#" class="restaurant-add-menu-btn add-to-cart" data-id="{{ food_item.id }}" data-url="{% url 'add_to_cart' food_item.id %}"><i class="icon-plus4 text-color"></i></a> 
+                              <span id="add-menu-loader-10"></span>
+                            </div>
+                          </li>
+                        {% endfor %}
+                        <br />
+                      </ul>
+                    {% endfor %}
+
+                  </div>
+                  {% for cart_item in cart_items %}
+                    <span id="qty-{{ cart_item.food_item.id }}" class="cart-item-qty d-none" data-qty="{{ cart_item.quantity }}">{{ cart_item.quantity }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Your order section -->
+        <div class="col-lg-44 col-md-4 col-sm-4 col-xs-12">
+          <div class="tabs-holder horizontal">
+            <ul class="stickynav-tabs nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#home"><i class="icon- icon-room_service"></i>Your Order</a></li>
+            </ul>
+            <div class="tab-content">
+              <div id="home" class="tab-pane in active">
+                <div class="menu-itam-holder">
+                  <div>
+                    <ul>
+                      <li style="list-style-type:none;">
+                        Subtotal
+                        <span class="price float-right">
+                          <span class="currency">$</span>
+                          <span id="subtotal">0</span>
+                        </span>
+                      </li>
+                      <li style="list-style-type:none;">
+                        Tax
+                        <span class="price float-right">
+                          <span class="currency">$</span>
+                          <span id="tax">0</span>
+                        </span>
+                      </li>
+                      <li style="list-style-type:none; font-weight:600;">
+                        TOTAL
+                        <span class="price float-right">
+                          <span class="currency">$</span>
+                          <span id="total">0</span>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

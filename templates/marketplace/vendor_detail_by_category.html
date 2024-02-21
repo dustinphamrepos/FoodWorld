@@ -68,13 +68,15 @@
             <div class="categories-menu">
               <h6><i class="icon-restaurant_menu"></i>Categories</h6>
               <ul class="menu-list">
-                <li class="{% if '/marketplace/cu-chi-paradises/' == request.path %} active {% endif %}">
+                <li class="{% if '/marketplace/restaurants/<slug:vendor_slug>/<int:category_id>/' == request.path %} active {% endif %}">
                   <a href="{% url 'vendor_detail' vendor.vendor_slug %}" class="menu-category-link">All</a>
                 </li>
                 {% for cat in categories %}
-                  <li class="{% if cat.id == pk %} active {% endif %}">
-                    <a href="{% url 'vendor_detail_by_category' vendor.vendor_slug cat.id %}" class="menu-category-link">{{ cat }}</a>
-                  </li>
+                  {% if cat.food_items_by_category.all %}
+                    <li class="{% if cat.id == category_id %} active {% endif %}">
+                      <a href="{% url 'vendor_detail_by_category' vendor.vendor_slug cat.id %}" class="menu-category-link">{{ cat }}</a>
+                    </li>
+                  {% endif %}
                 {% endfor %}
               </ul>
             </div>
@@ -117,11 +119,23 @@
                               <span><small>{{ food_item.description }}</small></span>
                             </div>
                             <div class="price-holder">
-                              <span class="price">${{ food_item.price }}</span>
-                              <a href="#" class="restaurant-add-menu-btn"><i class="icon-plus4 text-color"></i></a>
+                              <span class="price">${{ food_item.price }}</span><a href="#" class="restaurant-add-menu-btn decrease-cart" data-id="{{ food_item.id }}" data-url="{% url 'decrease_cart' food_item.id %}" style="margin-right:24px;"><i class="icon-minus text-color"></i></a>
+                              {% if food_item.id in list_food_item_id %}
+                                {% for cart_item in cart_items %}
+                                  {% if cart_item.food_item.id == food_item.id %}
+                                    <label id="food-item-qty-{{ food_item.id }}">{{ cart_item.quantity }}</label>
+                                  {% endif %}
+                                {% endfor %}
+                              {% else %}
+                                <label id="food-item-qty-{{ food_item.id }}">0</label>
+                              {% endif %}
+                              <a href="#" class="restaurant-add-menu-btn add-to-cart" data-id="{{ food_item.id }}" data-url="{% url 'add_to_cart' food_item.id %}"><i class="icon-plus4 text-color"></i></a> 
                               <span id="add-menu-loader-10"></span>
                             </div>
                           </li>
+                        {% endfor %}
+                        {% for cart_item in cart_items %}
+                          <span id="qty-{{ cart_item.food_item.id }}" class="cart-item-qty d-none" data-qty="{{ cart_item.quantity }}">{{ cart_item.quantity }}</span>
                         {% endfor %}
                       {% else %}
                         <h5 class="text-center">Out of stocks.</h5>

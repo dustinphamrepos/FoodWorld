@@ -59,7 +59,7 @@
                 <form action="#" style="position: relative;">
                   <input type="text" value="" name="location" placeholder="Enter your delivery location" autocomplete="off" style="padding-right: 30px;">
                   <span id="foodworld_radius_location_open" class="foodworld-radius-location"
-                    style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px;">
+                    style="position: absolute; top: 80%; transform: translateY(-80%); right: 10px;">
                     <i class="icon-target5"></i>
                   </span>
                 </form>
@@ -69,6 +69,14 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <div class="login-option">
+            {% if user.is_authenticated %}
+              <a href="{% url 'cart' %}" style="position: relative;">
+                <i class="fa fa-shopping-cart text-danger"></i>
+                <span class="badge badge-warning" id="cart-counter"
+                  style="border-radius:50px; position: absolute; top: 0; right: 0; transform: translate(50%, -50%);">{{ cart_count }}
+                </span>
+              </a>&nbsp;&nbsp;&nbsp;&nbsp;
+            {% endif %}
             <a href="{% url 'marketplace' %}" class="btn btn-outline-danger text-uppercase font-weight-bold" style="font-size:13px !important;">Marketplace</a>
             {% if user.is_authenticated %}
               <a href="{% url 'myAccount' %}" class="cs-color cs-popup-joinus-btn login-popup">

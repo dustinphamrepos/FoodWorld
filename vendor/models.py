@@ -6,7 +6,7 @@ from accounts.utils import send_notification
 # Create your models here.
 class Vendor(models.Model):
   user = models.OneToOneField(User, related_name='user_vendor', on_delete=models.CASCADE)
-  user_profile = models.OneToOneField(UserProfile, related_name='user_profile_vendor', on_delete=models.CASCADE)
+  user_profile = models.OneToOneField(UserProfile, related_name='vendor_by_user_profile', on_delete=models.CASCADE)
   vendor_name = models.CharField(max_length=50)
   vendor_slug = models.SlugField(max_length=100, unique=True)
   vendor_license = models.ImageField(upload_to='vendor/license')
