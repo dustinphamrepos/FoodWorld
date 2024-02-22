@@ -21,51 +21,54 @@
             <div class="tab-content">
               <div id="home" class="tab-pane in active">
                 <div class="menu-itam-holder">
+                  <div class="text-center p-5" id="empty-cart" style="display: none;">
+                    <h3>Cart is empty</h3>
+                  </div>
                   <div id="menu-item-list-6272" class="menu-itam-list">
 
-                    {% for category in categories %}
-                      {% if category.food_items_by_category.all %}
-                        <div class="element-title" id="menu-category-2">
-                          <h5 class="text-color">{{ category }}</h5>
-                          <span><small><em>{{ category.description }}<em></small></span>
-                        </div>
-                      {% endif %}
-                      <ul>
-                        {% for food_item in category.food_items_by_category.all %}
-                          <li>
+                    <ul>
+                      {% if cart_items %}
+                        {% for cart_item in cart_items %}
+                          <li id="cart-item-{{ cart_item.id }}">
                             <div class="image-holder">
                               <a href="">
-                                {% if food_item.image %}
-                                  <img src="{{ food_item.image.url }}" class="img-list wp-post-image" alt="Food Item" style="height:60px; width:65px;">
+                                {% if cart_item.food_item.image %}
+                                  <img src="{{ cart_item.food_item.image.url }}" class="img-list wp-post-image" alt="Food Item" style="height:60px; width:65px;">
                                 {% else %}
                                   <img src="{% static 'images/default-food-item.jpeg' %}" class="img-list wp-post-image" alt="Food Item">
                                 {% endif %}
                               </a>
                             </div>
                             <div class="text-holder">
-                              <h6>{{ food_item }}</h6>
-                              <span><small>{{ food_item.description }}</small></span>
+                              <h6>{{ cart_item.food_item }}</h6>
+                              <span><small>{{ cart_item.food_item.description }}</small></span>
+                              <a href="{% url 'vendor_detail' cart_item.food_item.vendor.vendor_slug %}" class="badge badge-warning">{{ cart_item.food_item.vendor }}</a>
                             </div>
                             <div class="price-holder">
-                              <span class="price">${{ food_item.price }}</span>
-                              <a href="#" class="restaurant-add-menu-btn decrease-cart" data-id="{{ food_item.id }}" data-url="{% url 'decrease_cart' food_item.id %}" style="margin-right:24px;"><i class="icon-minus text-color"></i></a>
-                              {% if food_item.id in list_food_item_id %}
-                                {% for cart_item in cart_items %}
-                                  {% if cart_item.food_item.id == food_item.id %}
-                                    <label id="food-item-qty-{{ food_item.id }}">{{ cart_item.quantity }}</label>
-                                  {% endif %}
-                                {% endfor %}
-                              {% else %}
-                                <label id="food-item-qty-{{ food_item.id }}">0</label>
-                              {% endif %}
-                              <a href="#" class="restaurant-add-menu-btn add-to-cart" data-id="{{ food_item.id }}" data-url="{% url 'add_to_cart' food_item.id %}"><i class="icon-plus4 text-color"></i></a> 
-                              <span id="add-menu-loader-10"></span>
+                              <span class="price">${{ cart_item.food_item.price }}</span>
+                              <a href="#" class="restaurant-add-menu-btn decrease-cart" id="{{ cart_item.id }}" data-id="{{ cart_item.food_item.id }}"
+                                data-url="{% url 'decrease_cart' cart_item.food_item.id %}" style="margin-right:24px;">
+                                <i class="icon-minus text-color"></i>
+                              </a>
+                              <label id="food-item-qty-{{ cart_item.food_item.id }}">{{ cart_item.quantity }}</label>
+                              <a href="#" class="restaurant-add-menu-btn add-to-cart" data-id="{{ cart_item.food_item.id }}"
+                                data-url="{% url 'add_to_cart' cart_item.food_item.id %}">
+                                <i class="icon-plus4 text-color"></i>
+                              </a> 
+                              <a href="#" class="restaurant-add-menu-btn delete-cart" data-id="{{ cart_item.id }}"
+                                data-url="{% url 'delete_cart' cart_item.id %}">
+                                <i class="icon-delete text-color"></i>
+                              </a> 
                             </div>
                           </li>
                         {% endfor %}
                         <br />
-                      </ul>
-                    {% endfor %}
+                      {% else %}
+                        <div class="text-center p-5">
+                          <h3>Cart is empty</h3>
+                        </div>
+                      {% endif %}
+                    </ul>
 
                   </div>
                   {% for cart_item in cart_items %}
@@ -79,6 +82,9 @@
 
         <!-- Your order section -->
         <div class="col-lg-44 col-md-4 col-sm-4 col-xs-12">
+          <br/>
+          <br/>
+          <br/>
           <div class="tabs-holder horizontal">
             <ul class="stickynav-tabs nav nav-tabs">
               <li class="active"><a data-toggle="tab" href="#home"><i class="icon- icon-room_service"></i>Your Order</a></li>
@@ -92,21 +98,21 @@
                         Subtotal
                         <span class="price float-right">
                           <span class="currency">$</span>
-                          <span id="subtotal">0</span>
+                          <span id="subtotal">{{ subtotal }}</span>
                         </span>
                       </li>
                       <li style="list-style-type:none;">
                         Tax
                         <span class="price float-right">
                           <span class="currency">$</span>
-                          <span id="tax">0</span>
+                          <span id="tax">{{ tax }}</span>
                         </span>
                       </li>
                       <li style="list-style-type:none; font-weight:600;">
                         TOTAL
                         <span class="price float-right">
                           <span class="currency">$</span>
-                          <span id="total">0</span>
+                          <span id="grand_total">{{ grand_total }}</span>
                         </span>
                       </li>
                     </ul>
