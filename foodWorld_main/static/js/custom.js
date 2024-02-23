@@ -44,31 +44,30 @@ function onPlaceChanged() {
   });
   // Loop through the address components and assign them to the fields
   //console.log(address);
-  //console.log(place.address_components);
+  console.log(place.address_components);
+  var pinCode = "";
   for (var i = 0; i < place.address_components.length; i++) {
     for (var j = 0; j < place.address_components[i].types.length; j++) {
       // get country
       if (place.address_components[i].types[j] == 'country') {
-        $("#id_country").val(place.address_components[i].long_name)
+        $("#id_country").val(place.address_components[i].long_name);
       }
       // get city
       if (place.address_components[i].types[j] == 'administrative_area_level_1') {
-        $("#id_city").val(place.address_components[i].long_name)
+          $("#id_city").val(place.address_components[i].long_name);
       }
       // get district
       if (place.address_components[i].types[j] == 'administrative_area_level_2') {
-        $("#id_district").val(place.address_components[i].long_name);
+          $("#id_district").val(place.address_components[i].long_name);
       }
-      //console.log(place.address_components);
       // get PIN code
       if (place.address_components[i].types[j] == 'postal_code') {
-        $("#id_pin_code").val(place.address_components[i].long_name);
-      }
-      else {
-        $("#id_pin_code").val("")
+          pinCode = place.address_components[i].long_name;
       }
     }
   }
+  $("#id_pin_code").val(pinCode);
+
 }
 
 $(document).ready(function () {
@@ -216,4 +215,82 @@ $(document).ready(function () {
     $('#tax').html(tax);
     $('#grand_total').html(grand_total);
   }
+
+  // Add opening hour
+  $('.add-opening-hour').on('click', function(e) {
+    // console.log('Button clicked!');
+    e.preventDefault();
+
+    var day = $('#id_day').val();
+    var from_hour = $('#id_from_hour').val();
+    var to_hour = $('#id_to_hour').val();
+    var is_closed = $('#id_is_closed').prop('checked');
+    var url = $('#add-opening-hour').val();
+    var csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+
+    if (is_closed) {
+      is_closed = 'True';
+      condition = "day != ''"
+    } else {
+      is_closed = 'False';
+      condition = "day != '' && from_hour != '' && to_hour != ''"
+    }
+
+    if (eval(condition)) {
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+          'day': day,
+          'from_hour': from_hour,
+          'to_hour': to_hour,
+          'is_closed': is_closed,
+          'csrfmiddlewaretoken': csrf_token,
+        },
+        success: function (response) {
+          //console.log(response);
+          if (response.status == 'success') {
+            if (response.is_closed == 'Closed') {
+              html = '<tr id="opening-hour-' + response.id + '"><td><b>' + response.day
+                + '</b></td><td>' + 'Closed'
+                + '</td><td><a href="" class="remove-opening-hour" data-url="/vendor/opening-hours/remove/'
+                + response.id + '/">Remove</a></td></tr>'
+            } else {
+              html = '<tr id="opening-hour-' + response.id + '"><td><b>' + response.day
+                + '</b></td><td>' + response.from_hour + '-' + response.to_hour
+                + '</td><td><a href="" class="remove-opening-hour" data-url="/vendor/opening-hours/remove/'
+                + response.id + '/">Remove</a></td></tr>'
+            }
+            $('table.opening-hours tbody').append(html);
+            $('#opening-hours')[0].reset();
+          } else {
+            Swal.fire(response.message, '', 'error')
+          }
+        }
+      })
+    } else {
+      Swal.fire('Please fill all fields!', '', 'info')
+    }
+  });
+  
+  // Remove opening hour
+  $(document).on('click', '.remove-opening-hour', function(e) {
+    e.preventDefault();
+
+    url = $(this).attr('data-url');
+    //console.log(url);
+
+    $.ajax({
+      type: 'GET',
+      url: url,
+      success: function (response) {
+        //console.log(response)
+        if (response.status == 'success') {
+          $('#opening-hour-' + response.id).remove();
+        }
+      }
+    })
+  })
+
+  // Document ready close
 });

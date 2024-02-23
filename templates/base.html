@@ -23,13 +23,15 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 
 	<!-- JAVASCRIPT -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	{% if '/' == request.path or 'profile' in request.path %}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	{% endif %}
 	<script src="{% static 'js/modernizr.js' %}"></script>
 	<script src="{% static 'js/bootstrap.js' %}"></script>
 
-	{% if '/profile/' in request.GET %}
-		<script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_API_KEY}}&libraries=places&callback=initAutocomplete" async defer type="text/javascript"></script>
-	{% endif %}
+	<script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_API_KEY}}&libraries=places&callback=initAutocomplete" defer></script>
+
 	<!-- Thêm vào phần head của trang -->
 
 	<script src="{% static 'js/custom.js' %}"></script>
