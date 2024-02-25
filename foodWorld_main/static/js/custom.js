@@ -92,7 +92,7 @@ $(document).ready(function () {
       type: 'GET',
       url: url,
       success: function (response) {
-        console.log(response);
+        //console.log(response);
         if (response.status == 'login_required') {
           Swal.fire(response.message, '', 'info').then(function () {
             window.location = '/accounts/login/';
@@ -107,10 +107,11 @@ $(document).ready(function () {
           if (window.location.pathname == '/cart/') {
             applyCartAmount(
               response.cart_amounts['subtotal'],
-              response.cart_amounts['tax'],
+              response.cart_amounts['tax_dict'],
               response.cart_amounts['grand_total'],
             )
           }
+          //console.log(response.cart_amounts['tax_dict'])
         }
       },
     });
@@ -123,13 +124,13 @@ $(document).ready(function () {
     var food_item_id = $(this).attr('data-id');
     var cart_item_id = $(this).attr('id');
     var url = $(this).attr('data-url');
-    console.log(url);
+    //console.log(url);
 
     $.ajax({
       type: 'GET',
       url: url,
       success: function (response) {
-        console.log(response);
+        //console.log(response);
         if (response.status == 'login_required') {
           Swal.fire(response.message, '', 'info').then(function () {
             window.location = '/accounts/login/';
@@ -143,7 +144,7 @@ $(document).ready(function () {
             // subtotal, tax and grand_total
             applyCartAmount(
               response.cart_amounts['subtotal'],
-              response.cart_amounts['tax'],
+              response.cart_amounts['tax_dict'],
               response.cart_amounts['grand_total'],
             )
             removeCartItem(response.quantity, cart_item_id);
@@ -166,7 +167,7 @@ $(document).ready(function () {
       type: 'GET',
       url: url,
       success: function (response) {
-        console.log(response);
+        //console.log(response);
         if (response.status == 'Failed') {
           Swal.fire(response.message, '', 'error')
         } else {
@@ -178,7 +179,7 @@ $(document).ready(function () {
           if (window.location.pathname == '/cart/') {
             applyCartAmount(
               response.cart_amounts['subtotal'],
-              response.cart_amounts['tax'],
+              response.cart_amounts['tax_dict'],
               response.cart_amounts['grand_total'],
             )
           }
@@ -210,10 +211,17 @@ $(document).ready(function () {
   }
 
   // Apply cart amounts
-  function applyCartAmount(subtotal, tax, grand_total) {
+  function applyCartAmount(subtotal, tax_dict, grand_total) {
     $('#subtotal').html(subtotal);
-    $('#tax').html(tax);
     $('#grand_total').html(grand_total);
+    //console.log(tax_dict);
+    for (key1 in tax_dict) {
+      //console.log(key1);
+      for (key2 in tax_dict[key1]) {
+        ///console.log(key2);
+        $('#tax-' + key1).html(tax_dict[key1][key2]);
+      }
+    }
   }
 
   // Add opening hour

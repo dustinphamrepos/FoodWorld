@@ -29,13 +29,14 @@ class Vendor(models.Model):
 
     is_open = None
     for c_o_hour in current_opening_hours:
-      start = str(datetime.strptime(c_o_hour.from_hour, '%I:%M %p').time())
-      end = str(datetime.strptime(c_o_hour.to_hour, '%I:%M %p').time())
-      if start < current_time < end:
-        is_open = True
-        break
-      else:
-        is_open = False
+      if c_o_hour.from_hour and c_o_hour.to_hour:
+        start = str(datetime.strptime(c_o_hour.from_hour, '%I:%M %p').time())
+        end = str(datetime.strptime(c_o_hour.to_hour, '%I:%M %p').time())
+        if start < current_time < end:
+          is_open = True
+          break
+        else:
+          is_open = False
     return is_open
     
   def save(self, *args, **kwargs):
