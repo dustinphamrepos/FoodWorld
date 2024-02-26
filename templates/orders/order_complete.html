@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+  <div class="justify-content-center row">
+    <div class="col-md-8">
+      <div class="bg-white p-3">
+        <img src="{% static 'logo/foodWorldLogo.jpg' %}" alt="FoodWorld Logo" width="300">
+        <br/>
+        <br/>
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="mt-2 mb-3">Thank you for your order.</h4>
+          </div>
+          <div class="col-md-6 text-right">
+            <br/>
+            <p class="mb-0">{{ order.name }}</p>
+            <p class="mb-0">{{ order.address }}</p>
+            <p class="mb-0">{{ order.phone_number }}</p>
+            <p class="mb-0">{{ order.email }}</p>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <h6>Hello {{ order.name }}, </h6>
+        <span>Thank your for your order. Review your order details below.</span>
+        <hr/>
+        <div class="d-flex justify-content-between">
+          <div>
+            <span class="d-block">Order Date:</span>
+            <span class="font-weight-bold">{{ order.created_at }}</span>
+          </div>
+          <div>
+            <span class="d-block">Order Number:</span>
+            <span class="font-weight-bold">{{ order.order_number }}</span>
+          </div>
+          <div>
+            <span class="d-block">Payment Method:</span>
+            <span class="font-weight-bold">{{ order.payment_method }}</span>
+          </div>
+          <div>
+            <span class="d-block">Transaction ID:</span>
+            <span class="font-weight-bold">{{ order.payment.transaction_id }}</span>
+          </div>
+        </div>
+        <hr/>
+        <table class="table">
+          <tbody>
+            {% for ordered_food_item in ordered_foods %}
+              <tr>
+                <td><img src="{{ ordered_food_item.food_item.image.url }}" width="60" alt="Food Item Image"></td>
+                <td style="font-size: 10px;">
+                  <p class="mb-1"><b>{{ ordered_food_item.food_item.food_title }}</b></p>
+                  <a class="text-muted" href="{% url 'vendor_detail' ordered_food_item.food_item.vendor.vendor_slug %}">{{ ordered_food_item.food_item.vendor.vendor_name }}</a>
+                </td>
+                <td>{{ ordered_food_item.quantity }} QTY</td>
+                <td>${{ ordered_food_item.food_item.price }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="row mt-5">
+          <div class="d-flex justify-content-center col-md-6">
+            <img src="{% static 'images/paid.png' %}" alt="" width="200">
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li style="list-style-type:none;">
+                Subtotal
+                <span class="price float-right">
+                  <span class="currency">$</span>
+                  <span id="subtotal">{{ subtotal }}</span>
+                </span>
+              </li>
+
+              {% comment %} {'VAT': {Decimal('5.00'): Decimal('23.15')}, 'TAV': {Decimal('8.00'): Decimal('37.04')}} {% endcomment %}
+              {% for key, value in tax_data.items %}
+                {% for i, j in value.items %}
+                  <li style="list-style-type:none;">
+                    {{ key }} <small>({{ i }}%)</small>
+                    <span class="price float-right">
+                      <span class="currency">$</span>
+                      <span id="tax-{{ key }}">{{ j }}</span>
+                    </span>
+                  </li>
+                {% endfor %}
+              {% endfor %}
+
+              <li style="list-style-type:none; font-weight:600;">
+                TOTAL
+                <span class="price float-right">
+                  <span class="currency">$</span>
+                  <span id="grand_total">{{ order.total }}</span>
+                </span>
+              </li>
+              <br/>
+              <br/>
+            </ul>
+          </div>
+        </div>
+        <br/>
+        <hr/>
+        <div class="d-flex justify-content-between">
+          <div>
+            <span class="d-block font-wight-bold">Thanks for ordering with us.</span>
+            <span>FoodWorld Team</span>
+          </div>
+          <div class="d-flex justify-content-end align-items-end">
+            <span class="d-block font-weight-bold">Need help?</span>&nbsp;
+            <span> Call - +84 8888.8888</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

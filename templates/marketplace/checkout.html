@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="main-section pt-5">
+  <div class="page-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="text-left">
+            <button class="btn btn-secondary" onclick="history.back()">
+              <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;Back
+            </button>
+          </div>
+          <br />
+          <div class="tabs-holder horizontal">
+            <ul class="stickynav-tabs nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-shopping-cart text-danger"></i>Billing Address</a></li>
+            </ul>
+            <div class="tab-content">
+              <div id="home" class="tab-pane in active">
+                <div class="menu-itam-holder">
+                  <div id="menu-item-list-6272" class="menu-itam-list">
+                    <form action="{% url 'place_order' %}" method="POST">
+                      {% csrf_token %}
+                      <div class="row">
+                        <div class="form-group col-md-6 col-sm-12 col-lg-6">
+                          First name: {{ form.first_name }}
+                        </div>
+                        <div class="form-group col-md-6 col-sm-12 col-lg-6">
+                          Last name: {{ form.last_name }}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-md-6 col-sm-12 col-lg-6">
+                          Phone number: {{ form.phone_number }}
+                        </div>
+                        <div class="form-group col-md-6 col-sm-12 col-lg-6">
+                          Email address: {{ form.email }}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-md-12 col-sm-12 col-lg-12">
+                          Address: {{ form.address }}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-md-6 col-sm-12 col-lg-6">
+                          Country: {{ form.country }}
+                        </div>
+                        <div class="form-group col-md-6 col-sm-12 col-lg-6">
+                          City: {{ form.city }}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-md-6 col-sm-12 col-lg-6">
+                          District: {{ form.district }}
+                        </div>
+                        <div class="form-group col-md-6 col-sm-12 col-lg-6">
+                          PIN code: {{ form.pin_code }}
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Your order section -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="tabs-holder horizontal">
+            <ul class="stickynav-tabs nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#home"><i class="icon- icon-room_service"></i>Your Order</a></li>
+            </ul>
+            <div class="tab-content">
+              <div id="home" class="tab-pane in active">
+                <div class="menu-itam-holder">
+
+                  <div id="menu-item-list-6272" class="menu-itam-list">
+
+                    <ul>
+                      {% if cart_items %}
+                        {% for cart_item in cart_items %}
+                          <li id="cart-item-{{ cart_item.id }}">
+                            <div class="image-holder">
+                              <a href="">
+                                {% if cart_item.food_item.image %}
+                                  <img src="{{ cart_item.food_item.image.url }}" class="img-list wp-post-image" alt="Food Item" style="height:60px; width:65px;">
+                                {% else %}
+                                  <img src="{% static 'images/default-food-item.jpeg' %}" class="img-list wp-post-image" alt="Food Item">
+                                {% endif %}
+                              </a>
+                            </div>
+                            <div class="text-holder">
+                              <h6>{{ cart_item.food_item }}</h6>
+                              <span><small>{{ cart_item.food_item.description }}</small></span>
+                              <a href="{% url 'vendor_detail' cart_item.food_item.vendor.vendor_slug %}" class="badge badge-warning">{{ cart_item.food_item.vendor }}</a>
+                            </div>
+                            <div class="quantity"
+                              style="display: inline-block; position: absolute; top: 50%, transform: translateY(-50%); margin-top: 12px;">
+                              <span>{{ cart_item.quantity }} QTY</span>
+                            </div>
+                            <div class="price-holder" style="margin-top: 10px;">
+                              <span class="price">${{ cart_item.food_item.price }}</span>
+                            </div>
+                          </li>
+                        {% endfor %}
+                        <br />
+                      {% else %}
+                        <div class="text-center p-5">
+                          <h3>Cart is empty</h3>
+                        </div>
+                      {% endif %}
+                    </ul>
+
+                  </div>
+                  <div>
+                    <ul>
+                      <li style="list-style-type:none;">
+                        Subtotal
+                        <span class="price float-right">
+                          <span class="currency">$</span>
+                          <span id="subtotal">{{ subtotal }}</span>
+                        </span>
+                      </li>
+
+                      {% comment %} {'VAT': {Decimal('5.00'): Decimal('23.15')}, 'TAV': {Decimal('8.00'): Decimal('37.04')}} {% endcomment %}
+                      {% for key, value in tax_dict.items %}
+                        {% for i, j in value.items %}
+                          <li style="list-style-type:none;">
+                            {{ key }} <small>({{ i }}%)</small>
+                            <span class="price float-right">
+                              <span class="currency">$</span>
+                              <span id="tax-{{ key }}">{{ j }}</span>
+                            </span>
+                          </li>
+                        {% endfor %}
+                      {% endfor %}
+
+                      <li style="list-style-type:none; font-weight:600;">
+                        TOTAL
+                        <span class="price float-right">
+                          <span class="currency">$</span>
+                          <span id="grand_total">{{ grand_total }}</span>
+                        </span>
+                      </li>
+                      <br/>
+                      <h5>SELECT PAYMENT METHOD</h5>
+                      <div class="payment_method">
+                        <label>
+                          <input type="radio" name="payment-method" value="PayPal">&nbsp;&nbsp;
+                          <img src="{% static 'images/PayPal.png' %}" alt="PayPal" width="80px" style="margin-right: 30px;">
+                        </label>
+                        <label>
+                          <input type="radio" name="payment-method" value="Momo">&nbsp;&nbsp;
+                          <img src="{% static 'images/Momo.jpeg' %}" alt="Momo" width="30px" style="margin-right: 30px;">
+                        </label>
+                        <label>
+                          <input type="radio" name="payment-method" value="ZaloPay">&nbsp;&nbsp;
+                          <img src="{% static 'images/ZaloPay.png' %}" alt="ZaloPay" width="30px">
+                        </label>
+                      </div>
+
+                      <span class="text-danger" id="payment-method-error"></span>
+
+                      <button onclick="return payMethodConfirm();" type="submit" class="btn btn-danger w-100 p-2 mt-3">PLACE ORDER</button>
+                    </ul>
+                    <!-- End form -->
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function payMethodConfirm() {
+    var payMethod = $("input[name='payment-method']:checked").val();
+    if (!payMethod) {
+      $("#payment-method-error").html('Please select payment method!');
+      return false;
+    } else {
+      var conf = confirm('You have selected ' + payMethod + ' as your preferred payment method.\nClick "OK" to continue.');
+      if (conf == true) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  $('input[name="payment-method"]').on('change', function() {
+    $('#payment-method-error').html("");
+  })
+
+</script>
+
+{% endblock content %}

@@ -44,19 +44,20 @@ class Vendor(models.Model):
       # Update
       origin = Vendor.objects.get(pk=self.pk)
       if origin.is_approved != self.is_approved:
-        email_template = 'accounts/emails/admin_approval_email.html'
+        mail_template = 'accounts/emails/admin_approval_email.html'
         context = {
             'user': self.user,
             'is_approved': self.is_approved,
+            'to_email': self.user.email,
         }
         if self.is_approved == True:
           # Send notification email
           mail_subject = 'Congratulations! Your restaurant has been approved!'
-          send_notification(mail_subject, email_template, context)
+          send_notification(mail_subject, mail_template, context)
         else:
           # Send notification email
           mail_subject = "We're sorry! You are not eligible for publishing your food menu on our marketplace."
-          send_notification(mail_subject, email_template, context)
+          send_notification(mail_subject, mail_template, context)
     return super(Vendor, self).save(*args, **kwargs)
   
 DAYS = [

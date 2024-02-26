@@ -82,9 +82,6 @@
 
         <!-- Your order section -->
         <div class="col-lg-44 col-md-4 col-sm-4 col-xs-12">
-          <br/>
-          <br/>
-          <br/>
           <div class="tabs-holder horizontal">
             <ul class="stickynav-tabs nav nav-tabs">
               <li class="active"><a data-toggle="tab" href="#home"><i class="icon- icon-room_service"></i>Your Order</a></li>
@@ -122,6 +119,7 @@
                           <span id="grand_total">{{ grand_total }}</span>
                         </span>
                       </li>
+                      <a href="{% url 'checkout' %}" class="btn btn-danger w-100 p-2 mt-3">PROCEED TO CHECKOUT</a>
                     </ul>
                   </div>
                 </div>
