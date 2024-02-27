@@ -1,11 +1,17 @@
 <div class="user-account-nav user-account-sidebar">
   <div class="user-nav-list">
     <ul>
-      <li class="{% if '/accounts/custommerDashboard/' == request.path or '/accounts/customer/' == request.path %} active {% endif %}"><a href="{% url 'customerDashboard' %}"><i class="icon-dashboard3"></i>Dashboard</a></li>
-      <li><a href="buyer-orders.html" class="btn-edit-profile"><i class="icon-add_shopping_cart"></i>My Orders</a></li>
-      <li class="{% if '/accounts/customer/profile/' == request.path %} active {% endif %}"><a class="btn-edit-profile" href="{% url 'customer_profile' %}"><i class="icon-settings"></i>Profile settings</a></li>
+      <li class="{% if '/accounts/custommerDashboard/' == request.path or '/accounts/customer/' == request.path %} active {% endif %}">
+        <a href="{% url 'customerDashboard' %}"><i class="icon-dashboard3"></i>Dashboard</a>
+      </li>
+      <li class="{% if '/my-orders/' in request.path or '/order-detail/' in request.path %} active {% endif %}">
+        <a href="{% url 'customer_my_orders' %}" class="btn-edit-profile"><i class="icon-add_shopping_cart"></i>My Orders</a>
+      </li>
+      <li class="{% if '/accounts/customer/profile/' == request.path %} active {% endif %}">
+        <a class="btn-edit-profile" href="{% url 'customer_profile' %}"><i class="icon-settings"></i>Profile settings</a>
+      </li>
       <li><a id="profile_delete" href="#"><i class="icon-unlock-alt"></i>Change password</a></li>
-      <li><a href="registration.html"><i class="icon-log-out"></i>Sign out</a></li>
+      <li><a href="{% url 'logout' %}" class=logout-btn><i class="icon-log-out"></i>Sign out</a></li>
     </ul>
   </div>
 </div>

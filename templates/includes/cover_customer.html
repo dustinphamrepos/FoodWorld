@@ -20,9 +20,10 @@
               </figure>
             </div>
             <div class="text-holder">
-              <span class="restaurant-title">{{ user_form.instance.first_name}} {{ user_form.instance.last_name }}</span>
+              <span class="restaurant-title">{{ user.first_name}} {{ user.last_name }}</span>
               <ul class="user-info-contact">
-                <li class="cell"><i class="icon-phone"></i><a href="tel:0123456789">{{ user_form.instance.phone_number }}</a></li>
+                <li class="cell"><i class="icon-phone"></i><a href="tel:{{ user.phone_number }}">{{ user.phone_number }}</a></li>
+                <li class="cell"><i class="icon-envelope"></i><a href="mailto:{{ user.email }}">&nbsp;{{ user.email }}</a></li>
               </ul>
             </div>
           </div>

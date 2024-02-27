@@ -54,3 +54,11 @@
 .payment-method [type=radio]:checked + img {
   outline: 2px solid #ff0000;
 }
+
+.text-decoration-none.text-muted {
+  color: inherit;
+}
+
+.text-decoration-none.text-muted:hover {
+  color: red;
+}
