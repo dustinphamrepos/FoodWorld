@@ -50,7 +50,7 @@ def registerUser(request):
       last_name = form.cleaned_data['last_name']
       username = form.cleaned_data['username']
       email = form.cleaned_data['email']
-      password = form.cleaned_data['first_name']
+      password = form.cleaned_data['password']
       user = User.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email, password=password)
       user.role = User.CUSTOMER
       user.save()
@@ -62,7 +62,7 @@ def registerUser(request):
 
       messages.success(request, 'Your account has been registered successfully.')
 
-      return redirect('registerUser')
+      return redirect('login')
     else:
       print('Invalid form')
       print(form.errors)
@@ -85,7 +85,7 @@ def registerVendor(request):
       last_name = form.cleaned_data['last_name']
       username = form.cleaned_data['username']
       email = form.cleaned_data['email']
-      password = form.cleaned_data['first_name']
+      password = form.cleaned_data['password']
       user = User.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email, password=password)
       user.role = User.VENDOR
       user.save()
@@ -104,7 +104,7 @@ def registerVendor(request):
       send_verification_email(request, user, mail_subject, email_template)
 
       messages.success(request, 'Your account has been created successfully. Please wait for the approval!')
-      return redirect('registerVendor')
+      return redirect('login')
     else:
       print("Invalid form")
       print(form.errors)

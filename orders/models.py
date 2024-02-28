@@ -77,12 +77,10 @@ class Order(models.Model):
     tax = 0
     tax_dict = {}
     if self.total_data:
-      # {"vendor_id": {"subtotal": {"tax_type": {"tax_percentage": "tax_amount"}}}
-      total_data = json.loads(self.total_data)
+      total_data = json.loads(self.total_data) # {"vendor_id": {"subtotal": {"tax_type": {"tax_percentage": "tax_amount"}}}
       data = total_data.get(str(vendor.id))
       # print(data) {'67.00': "{'VAT': {'5.00': '3.35'}, 'TAV': {'8.00': '5.36'}}"}
       if data:
-        # print(data)
         for key, val in data.items():
           subtotal += float(key)
           val = val.replace("'", '"')
@@ -91,11 +89,10 @@ class Order(models.Model):
           # print(val) {'VAT': {'5.00': '3.35'}, 'TAV': {'8.00': '5.36'}}
 
           # Calculate tax
-          # {'67.00': "{'VAT': {'5.00': '3.35'}, 'TAV': {'8.00': '5.36'}}"}
           for i in val:
-            # print(val[i])
+            # print(val[i]) {'5.00': '3.35'}
             for j in val[i]:
-              # print(val[i][j])
+              # print(val[i][j]) '3.35'
               tax += float(val[i][j])
     grand_total = Decimal(subtotal) + Decimal(tax)
 

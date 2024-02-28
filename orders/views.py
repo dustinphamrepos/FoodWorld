@@ -2,13 +2,14 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 import simplejson as json
 from django.contrib.auth.decorators import login_required
+from django.contrib.sites.shortcuts import get_current_site
 
 from marketplace.context_processors import get_cart_amounts
 from marketplace.models import Cart, Tax
 from menu.models import FoodItem
 from .forms import OrderForm
 from .models import Order, OrderedFood, Payment
-from .utils import generate_order_number
+from .utils import generate_order_number, order_total_by_vendor
 from accounts.utils import send_notification
 
 # Create your views here.
@@ -24,10 +25,10 @@ def place_order(request):
     if cart_item.food_item.vendor.id not in vendors_ids:
       vendors_ids.append(cart_item.food_item.vendor.id)
   # print(vendors_ids)
-  # {"vendor_id": {"subtotal": {"tax_type": {"tax_percentage": "tax_amount"}}}
+  
   get_tax = Tax.objects.filter(is_active=True)
   subtotal = 0
-  total_data = {}
+  total_data = {} # {"vendor_id": {"subtotal": {"tax_type": {"tax_percentage": "tax_amount"}}}
   k = {}
   for cart_item in cart_items:
     food_item = cart_item.food_item
@@ -40,7 +41,7 @@ def place_order(request):
       subtotal = food_item.price * cart_item.quantity
       k[vendor_id] = subtotal
   # print(food_item, food_item.vendor.id)
-    # print(subtotal)
+    # print(subtotal) {"vendor_id": {"subtotal": {"tax_type": {"tax_percentage": "tax_amount"}}}
   # print(k)
     # Calculate the tax_data
     tax_dict = {}
@@ -141,10 +142,20 @@ def payments(request):
     # Send order confirmation to the customer
     mail_subject = 'Thank you for ordering with us!'
     mail_template = 'orders/order_confirmation_email.html'
+    ordered_foods = OrderedFood.objects.filter(order=order)
+    customer_subtotal = 0
+    for ordered_food in ordered_foods:
+      customer_subtotal += ordered_food.price * ordered_food.quantity
+    tax_data = json.loads(order.tax_data)
+
     context = {
       'user': request.user,
       'order': order,
       'to_email': order.email,
+      'ordered_foods': ordered_foods,
+      'domain': get_current_site(request),
+      'customer_subtotal': customer_subtotal,
+      'tax_data': tax_data,
     }
     send_notification(mail_subject, mail_template, context)
     #return HttpResponse('Data saved and Email sent to customer.')
@@ -156,12 +167,18 @@ def payments(request):
     for cart_item in cart_items:
       if cart_item.food_item.vendor.user.email not in to_emails:
         to_emails.append(cart_item.food_item.vendor.user.email)
+        ordered_food_to_vendor = OrderedFood.objects.filter(order=order, food_item__vendor=cart_item.food_item.vendor)
+        print(ordered_food_to_vendor)
     # print(to_emails)
-    context = {
-      'order': order,
-      'to_email': to_emails
-    }
-    send_notification(mail_subject, mail_template, context)
+        context = {
+          'order': order,
+          'to_email': cart_item.food_item.vendor.user.email,
+          'ordered_food_to_vendor': ordered_food_to_vendor,
+          'vendor_subtotal': order_total_by_vendor(order, cart_item.food_item.vendor)['subtotal'],
+          'vendor_tax_data': order_total_by_vendor(order, cart_item.food_item.vendor)['tax_dict'],
+          'vendor_grand_total': order_total_by_vendor(order, cart_item.food_item.vendor)['grand_total'],
+        }
+        send_notification(mail_subject, mail_template, context)
     # return HttpResponse('Data saved and Email sent to vendor.')
 
     # Clear the cart if the payment is success

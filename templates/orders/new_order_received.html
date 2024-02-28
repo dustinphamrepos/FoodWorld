@@ -1,8 +1,130 @@
-{% autoescape off %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" lang="en">
 
-Hi.
-You have received a new order.
-Order number: {{ order.order_number }}
-Transaction ID: {{ order.payment.transaction_id }}
+<head>
+  <link rel="stylesheet" type="text/css" hs-webfonts="true" href="https://fonts.googleapis.com/css?family=Lato|Lato:i,b,bi">
+  <meta property="og:title" content="Email template">  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <style type="text/css">
+    #email {
+      margin: auto;
+      width: 600px;
+      background-color: white;
+    }  
+    .activate-btn{
+      font: inherit;
+      background-color: #C33332;
+      border: none;
+      padding: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 900;
+      border-radius: 5px; 
+      text-decoration: none;
+    }      
+  </style>    
+</head> 
+<body bgcolor="#F5F8FA" style="width: 100%; margin: auto 0; padding:0; font-family:Lato, sans-serif; font-size:16px; color:#33475B; word-break:break-word">
 
-{% endautoescape %}
+  <div id="email">
+    <!-- Header -->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td align="center" style="padding: 15px;">
+          <img alt="Logo" src="http://ww1.prweb.com/prfiles/2014/05/02/11822140/FoodWorldLogo.jpg" style="max-width: 100%;"/>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Order's information table -->
+    <table bgcolor="#EAF0F6" width="100%" role="presentation" border="0" cellpadding="5px" cellspacing="0" style="padding: 30px 30px 30px 30px;">
+      <tr>
+        <td colspan="2">
+          <h2 style="text-align: center;">Your restaurant received a new order.</h2>
+          <p style="text-align: center;">Review order information below.</p>
+        </td>
+      </tr>
+      <tr>
+        <td>Order date:</td>
+        <td>{{ order.created_at }}</td>
+      </tr>
+      <tr>
+        <td>Order number:</td>
+        <td>{{ order.order_number }}</td>
+      </tr>
+      <tr>
+        <td>Payment method:</td>
+        <td>{{ order.payment_method }}</td>
+      </tr>
+      <tr>
+        <td>Transaction ID:</td>
+        <td>{{ order.payment.transaction_id }}</td>
+      </tr>
+    </table>
+
+
+    <!-- Ordered Food table -->
+    <table bgcolor="#EAF0F6" width="100%" role="presentation" border="0" cellpadding="5px" cellspacing="0px" style="padding: 30px 30px 30px 30px;">
+      <tbody>
+        <tr>
+          <th style="border-bottom: 1px solid #ccc; text-align: left; padding-right: 20px;">Image</th>
+          <th style="border-bottom: 1px solid #ccc; text-align: left; padding-right: 20px;">Food Item</th>
+          <th style="border-bottom: 1px solid #ccc; text-align: left; padding-right: 20px;">QTY</th>
+          <th style="border-bottom: 1px solid #ccc; text-align: left;">Price</th>
+        </tr>
+        {% for ordered_food_item in ordered_food_to_vendor %}
+          <tr>
+            <td>
+              <img src="http://{{ domain }}{{ ordered_food_item.food_item.image.url }}" aly="Food Item Image" width="60">
+            </td>
+            <td style="vertical-align: top;">
+              <p style="margin: 0;">{{ ordered_food_item.food_item }}</p>
+              <small>
+                <a href="http://{{ domain }}{% url 'vendor_detail' ordered_food_item.food_item.vendor.vendor_slug %}" style="color: #ccc; display: block;">{{ ordered_food_item.food_item.vendor.vendor_name }}</a>
+              </small>
+            </td>
+            <td>{{ ordered_food_item.quantity }}</td>
+            <td>${{ ordered_food_item.price }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <hr>
+
+    <!-- Order Amounts -->
+    <table bgcolor="#EAF0F6" width="100%" role="presentation" border="0" cellpadding="5px" cellspacing="10px" style="padding: 30px 30px 30px 30px;">
+      <tbody>
+        <tr>
+          <td>Subtotal:</td>
+          <td style="text-align: right;">${{ vendor_subtotal }}</td>
+        </tr>
+
+        {% for key, val in vendor_tax_data.items %}
+          {% for i, j in val.items %}
+            <tr>
+              <td>{{ key }} <small>({{ i }}%):</small></td>
+              <td style="text-align: right;">${{ j }}</td>
+            </tr>
+          {% endfor %}
+        {% endfor %}
+        <tr>
+          <td style="font-weight: bold;">Grand total:</td>
+          <td style="text-align: right; font-weight: bold;">${{ vendor_grand_total }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  
+    <!-- Footer -->
+    <table role="presentation" bgcolor="#C33332" width="100%">
+      <tr>
+        <td align="center" style="padding: 15px; color: #fff;">
+          <p>© {% now 'Y' %} FoodWorld Marketplace. All Rights Reserved.</p>
+          <a href="http://{{ domain }}" style="color:#fff;">Visit Website</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
