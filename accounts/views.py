@@ -1,3 +1,4 @@
+import datetime
 from django.utils.http import urlsafe_base64_decode
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -181,7 +182,33 @@ def customerDashboard(request):
 @login_required(login_url='login')
 @user_passes_test(check_role_vendor)
 def vendorDashboard(request):
-  return render(request, 'accounts/vendorDashboard.html')
+  vendor = Vendor.objects.get(user=request.user)
+  orders = Order.objects.filter(vendors__in=[vendor.id], is_ordered=True).order_by('-created_at')
+  # print(orders)
+  recent_orders = orders[:5]
+
+  # Total revenue
+  total_revenue = 0
+  for order in orders:
+    total_revenue += order.get_total_by_vendor()['grand_total']
+
+  # Current month's revenue
+  current_month = datetime.datetime.now().month
+  current_month_orders = orders.filter(vendors__in=[vendor.id], created_at__month=current_month)
+  current_month_revenue = 0
+  for current_month_order in current_month_orders:
+    current_month_revenue += current_month_order.get_total_by_vendor()['grand_total']
+  # print(current_month_revenue)
+
+  context = {
+    'orders': orders,
+    'recent_orders': recent_orders,
+    'orders_count': orders.count(),
+    'total_revenue': total_revenue,
+    'current_month_revenue': current_month_revenue,
+  }
+  
+  return render(request, 'accounts/vendorDashboard.html', context)
 
 def forgot_password(request):
   if request.method == 'POST':

@@ -41,7 +41,7 @@ def customer_my_orders(request):
   }
   return render(request, 'customer/customer_my_orders.html', context)
 
-def order_detail(request, order_number):
+def customer_order_detail(request, order_number):
   try:
     order = Order.objects.get(order_number=order_number, is_ordered=True)
     ordered_foods = OrderedFood.objects.filter(order=order)
@@ -56,6 +56,6 @@ def order_detail(request, order_number):
       'subtotal': subtotal,
       'tax_data': tax_data,
     }
-    return render(request, 'customer/order_detail.html', context)
+    return render(request, 'customer/customer_order_detail.html', context)
   except:
-    return redirect('customerDashboard')
+    return redirect('customer')

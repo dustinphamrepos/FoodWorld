@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'marketplace.middlewares.AjaxMiddleware',
+    'orders.request_object.RequestObjectMiddleware', #for models in orders
 ]
 
 ROOT_URLCONF = 'foodWorld_main.urls'

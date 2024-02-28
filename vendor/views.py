@@ -10,6 +10,7 @@ from accounts.models import UserProfile
 from accounts.views import check_role_vendor
 from menu.forms import CategoryForm, FoodItemForm, FoodItemWithCategoryForm
 from menu.models import Category, FoodItem
+from orders.models import Order, OrderedFood
 from .forms import OpeningHourForm, VendorForm
 from .models import OpeningHour, Vendor
 
@@ -275,3 +276,31 @@ def remove_opening_hour(request, opening_hour_id=None):
         'status': 'success',
         'id': opening_hour_id,
       })
+
+def vendor_order_detail(request, order_number):
+  try:
+    order = Order.objects.get(order_number=order_number, is_ordered=True)
+    # print(order)
+    ordered_foods = OrderedFood.objects.filter(order=order, food_item__vendor=get_vendor(request))
+    print(ordered_foods)
+    context = {
+      'order': order,
+      'ordered_foods': ordered_foods,
+      'subtotal': order.get_total_by_vendor()['subtotal'],
+      'subtotal': order.get_total_by_vendor()['subtotal'],
+      'tax_data': order.get_total_by_vendor()['tax_dict'],
+      'grand_total': order.get_total_by_vendor()['grand_total'],
+    }
+    return render(request, 'vendor/vendor_order_detail.html', context)
+  except:
+    return redirect('vendor')
+  
+def vendor_my_orders(request):
+  vendor = Vendor.objects.get(user=request.user)
+  orders = Order.objects.filter(vendors__in=[vendor.id], is_ordered=True).order_by('-created_at')
+
+  context = {
+    'vendor': vendor,
+    'orders': orders,
+  }
+  return render(request, 'vendor/vendor_my_orders.html', context)

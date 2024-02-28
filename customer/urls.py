@@ -3,8 +3,8 @@ from accounts import views as AccountViews
 from . import views
 
 urlpatterns = [
-    path('', AccountViews.customerDashboard, name='customerDashboard'),
+    path('', AccountViews.customerDashboard, name='customer'),
     path('profile/', views.customer_profile, name='customer_profile'),
     path('my-orders/', views.customer_my_orders, name='customer_my_orders'),
-    path('order-detail/<int:order_number>/', views.order_detail, name='order_detail'),
+    path('customer-order-detail/<int:order_number>/', views.customer_order_detail, name='customer_order_detail'),
 ]
