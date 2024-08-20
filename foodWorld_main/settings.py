@@ -153,6 +153,10 @@ STATICFILES_DIRS = [
   'foodWorld_main/static'
 ]
 
+# settings.py
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 #Media Files
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR /'media'
