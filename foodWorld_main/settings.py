@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 from decouple import config
 
@@ -60,6 +61,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'marketplace.middlewares.AjaxMiddleware',
     'orders.request_object.RequestObjectMiddleware', #for models in orders
+]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # Add any custom finders here
 ]
 
 ROOT_URLCONF = 'foodWorld_main.urls'
@@ -148,10 +155,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR /'static'
-STATICFILES_DIRS = [
-  'foodWorld_main/static'
-]
+# STATIC_ROOT = BASE_DIR /'static'
+# STATICFILES_DIRS = [
+#   'foodWorld_main/static'
+# ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 
 # settings.py
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
