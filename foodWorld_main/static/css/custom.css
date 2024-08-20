@@ -25,18 +25,6 @@
   cursor: pointer !important;
 }
 
-/* table > tbody > tr > td {
-  border: none !important;
-} */
-
-/* #opening-hours select {
-  padding: 5px 10px !important;
-}
-
-.btn-success.add-opening-hour {
-  padding: 7px 15px 7px 15px !important;
-} */
-
 /* hide radio button */
 .payment-method [type=radio] {
   position: absolute;
@@ -61,4 +49,17 @@
 
 .text-decoration-none.text-muted:hover {
   color: red;
+}
+
+@media only screen and (max-width: 480px){
+  a.get-start-btn {
+    display: block;
+    margin-top: 15px !important;
+    margin-left: 0 !important;
+  }
+  .main-search-bar {
+    padding-top: 100px !important;
+    padding-bottom: 50px !important;
+    background-position: left !important;
+  }
 }

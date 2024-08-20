@@ -98,8 +98,14 @@
                         </span>
                       </li>
                       <br/>
+
+                      {% if order.payment_method == "PayPal" %}
                       <!-- Paypal checkout button -->
-                      <div id="paypal-button-container"></div>
+                        <div id="paypal-button-container"></div>
+                      {% elif order.payment_method == "Momo" %}
+                        <button class="btn btn-danger w-100" name="momo" id="momo-payment-button">Pay with Momo</button>
+                      {% endif %}
+
                     </ul>
                   </div>
                 </div>
@@ -111,7 +117,6 @@
     </div>
   </div>
 </div>
-
 <script>
   function getCookie(name) {
     let cookieValue = null;
@@ -188,6 +193,49 @@
       }
     });
   }
+
+
+  // Momo
+
+  var momoButton = $("#momo-payment-button");
+  var grand_total = "{{ grand_total }}";
+  var url = "{% url 'payments' %}";
+  var url_momo = "{% url 'payments_by_momo' %}";
+  var order_number = "{{ order.order_number }}";
+  const csrftoken = getCookie('csrftoken');
+  var order_complete_url = "{% url 'order_complete' %}";
+  // Thêm mã sau vào file script
+  function moMoScriptCall(grandTotal, apiUrl, orderNumber, csrfToken, orderCompleteUrl) {
+    window.onload = function () {
+        // Render nút thanh toán Momo vào container có id là "momo-button-container"
+        // Xử lý sự kiện khi người dùng click nút thanh toán Momo
+        momoButton.on('click', function () {
+          console.log("'aaa")
+            // Gọi API Django để lấy thông tin thanh toán và redirect đến Momo
+            $.ajax({
+              type: 'POST',
+              url: url_momo,
+              data: {
+                'order_number': order_number,
+                'transaction_id': transaction_id,
+                'payment_method': payment_method,
+                'status': status,
+                'csrfmiddlewaretoken': csrftoken,
+              },
+              success: function(response) {
+                console.log('response: ', response);
+                window.location.href = order_complete_url + '?order_no='
+                  + response.order_number + '&trans_id='
+                  + response.transaction_id;
+              }
+            });
+        });
+    };
+  }
+
+  // Gọi hàm xử lý thanh toán Momo
+  moMoScriptCall(grand_total, url_momo, order_number, csrftoken, order_complete_url);
+
 
 </script>
 

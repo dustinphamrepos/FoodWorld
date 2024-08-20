@@ -1,6 +1,6 @@
 import datetime
 from decimal import Decimal
-import json
+import simplejson as json
 
 def generate_order_number(pk):
   current_datetime = datetime.datetime.now().strftime('%Y%m%d%H%M%S')

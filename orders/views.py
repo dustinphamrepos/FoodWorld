@@ -1,8 +1,13 @@
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, HttpResponse
 import simplejson as json
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
+import uuid
+import hmac
+import hashlib
+from django.utils.encoding import force_bytes
+import requests
 
 from marketplace.context_processors import get_cart_amounts
 from marketplace.models import Cart, Tax
@@ -54,7 +59,7 @@ def place_order(request):
     
     # Construct total_data
     total_data.update({food_item.vendor.id: {str(subtotal): str(tax_dict)}})
-  print(total_data)
+  #print(total_data)
     
   # subtotal = get_cart_amounts(request)['subtotal']
   total_tax = get_cart_amounts(request)['tax']
@@ -168,7 +173,7 @@ def payments(request):
       if cart_item.food_item.vendor.user.email not in to_emails:
         to_emails.append(cart_item.food_item.vendor.user.email)
         ordered_food_to_vendor = OrderedFood.objects.filter(order=order, food_item__vendor=cart_item.food_item.vendor)
-        print(ordered_food_to_vendor)
+        # print(ordered_food_to_vendor)
     # print(to_emails)
         context = {
           'order': order,
@@ -193,6 +198,88 @@ def payments(request):
     return JsonResponse(response)
 
   return HttpResponse("Payments view")
+
+@login_required(login_url='login')
+def payments_by_momo(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        # Lấy thông tin thanh toán từ request
+        order_number = request.POST.get('order_number')
+        order = Order.objects.get(user=request.user, order_number=order_number)
+        transaction_id = str(uuid.uuid4())
+        payment_method = 'Momo'
+        status = 'success'
+        orderId = force_bytes(str(uuid.uuid4()))
+        #orderId = order.id
+
+        # Các thông tin cần cho thanh toán Momo
+        endpoint = "https://test-payment.momo.vn/v2/gateway/api/create"
+        partnerCode = force_bytes("MOMO")
+        accessKey = force_bytes("F8BBA842ECF85")
+        secretKey = force_bytes("K951B6PE1waDMi640xX08PD3vg6EkVlz")
+        orderInfo = force_bytes(f"Thanh toán đơn hàng {order_number}")
+        redirectUrl = force_bytes("http://127.0.0.1:8000/")
+        ipnUrl = force_bytes("http://127.0.0.1:8000/")
+        amount = force_bytes(str(order.total))  # Chuyển amount thành bytes
+        requestId = force_bytes(str(uuid.uuid4()))
+        requestType = force_bytes("captureWallet")
+        extraData = force_bytes("")
+
+        # Tạo chuỗi rawSignature để tạo chữ ký
+        rawSignature = force_bytes(f"accessKey={accessKey}&amount={amount}&extraData={extraData}&ipnUrl={ipnUrl}&orderId={orderId}&orderInfo={orderInfo}&partnerCode={partnerCode}&redirectUrl={redirectUrl}&requestId={requestId}&requestType={requestType}")
+
+        # Tạo chữ ký từ rawSignature
+        h = hmac.new(secretKey, rawSignature, hashlib.sha256)
+        signature = h.hexdigest()
+
+        # Tạo dữ liệu JSON để gửi đến endpoint của Momo
+        data = {
+            'partnerCode': partnerCode,
+            'partnerName': "Test",
+            'storeId': "MomoTestStore",
+            'requestId': requestId,
+            'amount': amount,
+            'orderId': orderId,
+            'orderInfo': orderInfo,
+            'redirectUrl': redirectUrl,
+            'ipnUrl': ipnUrl,
+            'lang': "vi",
+            'extraData': extraData,
+            'requestType': requestType,
+            'signature': signature
+        }
+        print("dt:", data)
+
+        # Gửi yêu cầu thanh toán đến Momo endpoint
+        response = requests.post(endpoint, json=data)
+        # Sau khi thực hiện yêu cầu đến API MoMo
+        print(response.text)
+
+
+        # Lấy payUrl từ phản hồi của Momo
+        payUrl = response.json().get('payUrl', None)
+
+        if payUrl:
+            # Bạn có thể lưu thông tin thanh toán và cập nhật trạng thái đơn hàng tại đây
+            payment = Payment.objects.create(
+                user=request.user,
+                transaction_id=transaction_id,
+                payment_method=payment_method,
+                amount=order.total,
+                status=status
+            )
+
+            # Cập nhật trạng thái đơn hàng
+            order.payment = payment
+            order.is_ordered = True
+            order.save()
+
+            # Chuyển hướng người dùng đến trang thanh toán Momo
+            return JsonResponse({'redirect_url': payUrl})
+        else:
+            return JsonResponse({'error': 'Failed to get payUrl from Momo'})
+
+    return JsonResponse({'error': 'Invalid request'})
+
 
 def order_complete(request):
   order_number = request.GET.get('order_no')
