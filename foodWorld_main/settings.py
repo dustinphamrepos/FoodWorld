@@ -31,7 +31,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', cast=bool, default=False)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['food-world-0da757a31d54.herokuapp.com']
 
 
 # Application definition
