@@ -172,7 +172,7 @@ STATICFILES_DIRS = [
 
 
 # settings.py
-STATICFILES_STORAGE = 'whitenoise.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 #Media Files
